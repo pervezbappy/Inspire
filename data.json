@@ -1,1 +1,122 @@
-
+[
+  {
+    "name": "E5-36 01060528 LINE FILTER",
+    "quantity": 0,
+    "buyPrice": 5000,
+    "sellPrice": 0
+  },
+  {
+    "name": "E7-36 01060528 LINE FILTER",
+    "quantity": 0,
+    "buyPrice": 5000,
+    "sellPrice": 0
+  },
+  {
+    "name": "E9-36 01060528 LINE FILTER",
+    "quantity": 0,
+    "buyPrice": 5000,
+    "sellPrice": 0
+  },
+  {
+    "name": "117-4089 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 1100,
+    "sellPrice": 0
+  },
+  {
+    "name": "FF5018..FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 200,
+    "sellPrice": 0
+  },
+  {
+    "name": "LF4054..OIL FILTER.",
+    "quantity": 0,
+    "buyPrice": 450,
+    "sellPrice": 0
+  },
+  {
+    "name": "C7601 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1200,
+    "sellPrice": 0
+  },
+  {
+    "name": "W950 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 0
+  },
+  {
+    "name": "AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 60,
+    "sellPrice": 0
+  },
+  {
+    "name": "1R-0739 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 800,
+    "sellPrice": 0
+  },
+  {
+    "name": "LF667..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 550,
+    "sellPrice": 0
+  },
+  {
+    "name": "FF5018..FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 200,
+    "sellPrice": 0
+  },
+  {
+    "name": "LF3345...OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 350,
+    "sellPrice": 0
+  },
+  {
+    "name": "W962 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 900,
+    "sellPrice": 0
+  },
+  {
+    "name": "FF5052 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 250,
+    "sellPrice": 0
+  },
+  {
+    "name": "4930153131 AIR OIL SEPARETOR",
+    "quantity": 0,
+    "buyPrice": 4500,
+    "sellPrice": 0
+  },
+  {
+    "name": "4930152101 AIR OIL SEPARETOR",
+    "quantity": 0,
+    "buyPrice": 5000,
+    "sellPrice": 0
+  },
+  {
+    "name": "FF5507..FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 700,
+    "sellPrice": 0
+  },
+  {
+    "name": "LF3654..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 700,
+    "sellPrice": 0
+  },
+  {
+    "name": "26561117..FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 200,
+    "sellPrice": 0
+  }
+]
