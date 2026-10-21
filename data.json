@@ -6,6 +6,79 @@
     "sellPrice": 6000
   },
   {
+    "name": "Vibrator",
+    "quantity": 0,
+    "buyPrice": 5100,
+    "sellPrice": 7000
+  },
+  {
+    "name": "Vinrator Nozel 38mm",
+    "quantity": 0,
+    "buyPrice": 3800,
+    "sellPrice": 4500
+  },
+  {
+    "name": "Vibrator Nozel 50mm",
+    "quantity": 0,
+    "buyPrice": 4200,
+    "sellPrice": 5200
+  },
+  {
+    "name": "Floor Jack single piston 3Ton ",
+    "quantity": 0,
+    "buyPrice": 10000,
+    "sellPrice": 13000 
+  },
+  {
+    "name": " Floor Jack double piston 3Ton",
+    "quantity": 0,
+    "buyPrice": 13000,
+    "sellPrice": 17000
+  },
+  {
+    "name": " Car Wash Motor",
+    "quantity": 0,
+    "buyPrice": 7500,
+    "sellPrice": 9500
+  },
+  {
+    "name": " Car Wash 3Hp",
+    "quantity": 0,
+    "buyPrice": 25000,
+    "sellPrice": 32000
+  },
+  {
+    "name": " Fome tank ",
+    "quantity": 0,
+    "buyPrice":10500 ,
+    "sellPrice": 12500
+  },
+  {
+    "name": " Rod Cutter Small",
+    "quantity": 0,
+    "buyPrice": 17500,
+    "sellPrice": 25000
+  },
+  {
+    "name": "Compressor 300L 4Hp ",
+    "quantity": 0,
+    "buyPrice":47000 ,
+    "sellPrice": 58000
+  },
+  {
+    "name": "Compressor 200L  ",
+    "quantity": 0,
+    "buyPrice": ,
+    "sellPrice": 
+  },
+  {
+    "name": "Rod Cutter Big ",
+    "quantity": 0,
+    "buyPrice": 24500 ,
+    "sellPrice": 32000
+  },
+  
+  {
     "name": "E7-36 01060528 LINE FILTER",
     "quantity": 0,
     "buyPrice": 5000,
