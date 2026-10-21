@@ -66,10 +66,29 @@
     "sellPrice": 58000
   },
   {
-    "name": "Compressor 200L  ",
+    "name": "Compressor 200L 3Hp  ",
     "quantity": 0,
-    "buyPrice": ,
-    "sellPrice": 
+    "buyPrice": 32000,
+    "sellPrice": 40000
+  },
+   {
+    "name": "Compressor 100L 3Hp 65x2",
+    "quantity": 0,
+    "buyPrice":24000 ,
+    "sellPrice": 30000
+  },
+  {
+    "name": "Compressor 100L 2Hp 51x2",
+    "quantity": 0,
+    "buyPrice":21000 ,
+    "sellPrice": 27000
+  },
+  
+   {
+    "name": "Compressor 50L",
+    "quantity": 0,
+    "buyPrice":11000 ,
+    "sellPrice": 15000
   },
   {
     "name": "Rod Cutter Big ",
