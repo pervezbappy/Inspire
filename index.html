@@ -2,16 +2,22 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- viewport — maximum-scale রাখা হলো 1.0 যাতে মোবাইলে ইনপুট ফোকাসে জুম না হয় -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <!-- থিম কালার — মোবাইল ব্রাউজার বার একই কালারে সাজানো -->
+  <meta name="theme-color" content="#059669" />
+  <!-- অ্যাপল টাচ আইকন মেটা — আইফোনে হোম স্ক্রিনে অ্যাপ লুক -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="দোকান স্টক" />
   <title>দোকান স্টক ও বিক্রয়মূল্য ব্যবস্থাপনা</title>
 
   <!-- ============================================================
-       Tailwind CSS CDN — প্রোডাকশনে কম্পাইল করার প্রয়োজন নেই,
-       GitHub Pages-এ সরাসরি কাজ করবে।
+       Tailwind CSS CDN — GitHub Pages-এ সরাসরি কাজ করবে।
        ============================================================ -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- বাংলা ফন্ট — Noto Sans Bengali, দেখতে ক্লিন ও প্রফেশনাল -->
+  <!-- বাংলা ফন্ট — Hind Siliguri + Noto Sans Bengali -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -19,7 +25,7 @@
     rel="stylesheet"
   />
 
-  <!-- Tailwind কনফিগ — কাস্টম ফন্ট ফ্যামিলি যোগ করা হলো -->
+  <!-- Tailwind কনফিগ — কাস্টম ফন্ট ফ্যামিলি -->
   <script>
     tailwind.config = {
       theme: {
@@ -27,24 +33,33 @@
           fontFamily: {
             bengali: ['"Hind Siliguri"', '"Noto Sans Bengali"', 'sans-serif'],
           },
+          // মোবাইলে টাচ টার্গেট সাইজ বড় করার জন্য spacing এক্সটেনশন
+          spacing: {
+            '18': '4.5rem',
+          },
         },
       },
     };
   </script>
 
   <style>
-    /* বডির জন্য বাংলা ফন্ট ডিফল্ট করা হলো */
+    /* বডির জন্য বাংলা ফন্ট ডিফল্ট */
     body {
       font-family: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
+      /* মোবাইলে টেক্সট সাইজ অটো-এডজাস্ট এড়াতে */
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      /* টাচ স্ক্রল স্মুথ করার জন্য */
+      -webkit-overflow-scrolling: touch;
     }
 
-    /* কাস্টম স্ক্রলবার — প্রিমিয়াম লুক */
+    /* কাস্টম স্ক্রলবার — প্রিমিয়াম লুক (ডেস্কটপ) */
     ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: #f1f5f9; }
     ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #64748b; }
 
-    /* মডাল ওপেন হলে ব্যাকগ্রাউন্ড স্ক্রল বন্ধ করা */
+    /* মডাল ওপেন হলে ব্যাকগ্রাউন্ড স্ক্রল বন্ধ */
     body.modal-open { overflow: hidden; }
 
     /* মডাল অ্যানিমেশন */
@@ -69,39 +84,73 @@
     tbody tr {
       transition: background-color 0.15s ease;
     }
+
+    /* মোবাইল কার্ড ভিউ — অ্যানিমেশন সহ এন্ট্রি */
+    .card-enter {
+      animation: cardIn 0.3s ease-out backwards;
+    }
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* টাচ ডিভাইসে হোভার এফেক্ট এড়ানোর জন্য */
+    @media (hover: none) {
+      .hover\:bg-emerald-50\/40:hover { background-color: transparent; }
+    }
+
+    /* iOS Safari এ ইনপুট স্টাইল এডজাস্ট */
+    input, button, select, textarea {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+    select {
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 0.7rem center;
+      background-size: 1.2em;
+      padding-right: 2.5rem;
+    }
+
+    /* নিরাপদ এরিয়া — iPhone X+ এ নচ এড়াতে */
+    .safe-top    { padding-top: env(safe-area-inset-top); }
+    .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
   </style>
 </head>
 
-<body class="font-bengali bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 min-h-screen">
+<body class="font-bengali bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 min-h-screen pb-20 md:pb-0">
 
   <!-- ============================================================
-       হেডার — গ্রেডিয়েন্ট + শ্যাডো
+       হেডার — গ্রেডিয়েন্ট + শ্যাডো, স্টিকি
        ============================================================ -->
-  <header class="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 shadow-lg sticky top-0 z-30">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-        <div class="flex items-center gap-3">
+  <header class="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 shadow-lg sticky top-0 z-30 safe-top">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-5">
+      <!-- মোবাইল: কমপ্যাক্ট লেআউট -->
+      <div class="flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
           <!-- লোgo আইকন -->
-          <div class="w-11 h-11 rounded-xl bg-white/15 backdrop-blur-sm flex items-center justify-center ring-1 ring-white/25">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-white/15 backdrop-blur-sm flex items-center justify-center ring-1 ring-white/25 flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
             </svg>
           </div>
-          <div>
-            <h1 class="text-xl sm:text-2xl font-bold text-white tracking-tight">স্টক ও বিক্রয়মূল্য ব্যবস্থাপনা</h1>
-            <p class="text-emerald-50/90 text-xs sm:text-sm">আপনার দোকানের প্রোডাক্ট ও ডিসকাউন্ট হিসাব</p>
+          <div class="min-w-0">
+            <h1 class="text-base sm:text-2xl font-bold text-white tracking-tight truncate">স্টক ও বিক্রয়মূল্য ব্যবস্থাপনা</h1>
+            <p class="text-emerald-50/90 text-[11px] sm:text-sm truncate">আপনার দোকানের প্রোডাক্ট ও ডিসকাউন্ট হিসাব</p>
           </div>
         </div>
 
-        <!-- রিফ্রেশ বাটন -->
+        <!-- রিফ্রেশ বাটন — মোবাইলে ছোট আইকন -->
         <button
           id="refreshBtn"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/15 hover:bg-white/25 text-white text-sm font-medium ring-1 ring-white/25 transition"
+          class="inline-flex items-center gap-1.5 px-2.5 py-2 sm:px-4 sm:py-2 rounded-lg bg-white/15 hover:bg-white/25 active:bg-white/35 text-white text-xs sm:text-sm font-medium ring-1 ring-white/25 transition flex-shrink-0"
+          aria-label="রিফ্রেশ"
         >
           <svg id="refreshIcon" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
           </svg>
-          রিফ্রেশ
+          <span class="hidden sm:inline">রিফ্রেশ</span>
         </button>
       </div>
     </div>
@@ -110,11 +159,14 @@
   <!-- ============================================================
        মূল কন্টেন্ট
        ============================================================ -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+  <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8">
 
-    <!-- সার্চ ও স্ট্যাটস বার -->
-    <div class="bg-white rounded-2xl shadow-sm ring-1 ring-slate-200/70 p-4 sm:p-5 mb-6">
-      <div class="flex flex-col lg:flex-row lg:items-center gap-4">
+    <!-- ============================================================
+         সার্চ + সর্ট + স্ট্যাটস বার
+         ============================================================ -->
+    <div class="bg-white rounded-2xl shadow-sm ring-1 ring-slate-200/70 p-3 sm:p-5 mb-4 sm:mb-6">
+      <!-- প্রথম রো: সার্চ + সর্ট ড্রপডাউন -->
+      <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
         <!-- সার্চ ইনপুট -->
         <div class="relative flex-1">
           <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -125,21 +177,57 @@
           <input
             id="searchInput"
             type="text"
+            inputmode="search"
+            enterkeyhint="search"
             placeholder="প্রোডাক্টের নাম দিয়ে খুঁজুন..."
-            class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+            class="w-full pl-10 pr-4 py-3 sm:py-2.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 text-base placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
           />
         </div>
 
-        <!-- স্ট্যাটস -->
-        <div class="flex gap-3">
-          <div class="px-4 py-2.5 rounded-lg bg-emerald-50 ring-1 ring-emerald-100">
-            <p class="text-xs text-emerald-700/70">মোট প্রোডাক্ট</p>
-            <p id="totalCount" class="text-lg font-bold text-emerald-700">০</p>
+        <!-- সর্ট ড্রপডাউন -->
+        <div class="flex gap-2">
+          <div class="relative flex-1 sm:flex-none">
+            <select
+              id="sortSelect"
+              class="w-full sm:w-auto py-3 sm:py-2.5 pl-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition cursor-pointer"
+              aria-label="সর্ট অপশন"
+            >
+              <option value="name-asc">নাম: A → Z</option>
+              <option value="name-desc">নাম: Z → A</option>
+              <option value="stock-desc">স্টক: বেশি → কম</option>
+              <option value="stock-asc">স্টক: কম → বেশি</option>
+              <option value="price-asc">মূল্য: কম → বেশি</option>
+              <option value="price-desc">মূল্য: বেশি → কম</option>
+            </select>
           </div>
-          <div class="px-4 py-2.5 rounded-lg bg-teal-50 ring-1 ring-teal-100">
-            <p class="text-xs text-teal-700/70">মোট স্টক</p>
-            <p id="totalStock" class="text-lg font-bold text-teal-700">০</p>
-          </div>
+
+          <!-- ভিউ টগল বাটন (শুধু মোবাইলে দৃশ্যমান) -->
+          <button
+            id="viewToggleBtn"
+            class="md:hidden inline-flex items-center justify-center px-3 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-600 hover:bg-slate-100 active:bg-slate-200 transition flex-shrink-0"
+            aria-label="ভিউ পরিবর্তন"
+            title="ভিউ পরিবর্তন"
+          >
+            <svg id="viewToggleIcon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- দ্বিতীয় রো: স্ট্যাটস — মোবাইলে ছোট ব্যাজ -->
+      <div class="flex gap-2 mt-3">
+        <div class="flex-1 sm:flex-none px-3 py-2 sm:px-4 sm:py-2.5 rounded-lg bg-emerald-50 ring-1 ring-emerald-100">
+          <p class="text-[10px] sm:text-xs text-emerald-700/70">মোট প্রোডাক্ট</p>
+          <p id="totalCount" class="text-base sm:text-lg font-bold text-emerald-700 leading-tight">০</p>
+        </div>
+        <div class="flex-1 sm:flex-none px-3 py-2 sm:px-4 sm:py-2.5 rounded-lg bg-teal-50 ring-1 ring-teal-100">
+          <p class="text-[10px] sm:text-xs text-teal-700/70">মোট স্টক</p>
+          <p id="totalStock" class="text-base sm:text-lg font-bold text-teal-700 leading-tight">০</p>
+        </div>
+        <div class="flex-1 px-3 py-2 sm:px-4 sm:py-2.5 rounded-lg bg-cyan-50 ring-1 ring-cyan-100">
+          <p class="text-[10px] sm:text-xs text-cyan-700/70">দেখানো হচ্ছে</p>
+          <p id="filteredCount" class="text-base sm:text-lg font-bold text-cyan-700 leading-tight">০</p>
         </div>
       </div>
     </div>
@@ -147,7 +235,7 @@
     <!-- ============================================================
          লোডিং স্টেট
          ============================================================ -->
-    <div id="loadingState" class="hidden bg-white rounded-2xl shadow-sm ring-1 ring-slate-200/70 p-12">
+    <div id="loadingState" class="hidden bg-white rounded-2xl shadow-sm ring-1 ring-slate-200/70 p-8 sm:p-12">
       <div class="flex flex-col items-center justify-center gap-4">
         <div class="w-12 h-12 border-4 border-emerald-200 border-t-emerald-600 rounded-full animate-spin"></div>
         <p class="text-slate-500 text-sm">ডাটা লোড হচ্ছে...</p>
@@ -157,7 +245,7 @@
     <!-- ============================================================
          এরর স্টেট
          ============================================================ -->
-    <div id="errorState" class="hidden bg-white rounded-2xl shadow-sm ring-1 ring-red-200 p-8 sm:p-12">
+    <div id="errorState" class="hidden bg-white rounded-2xl shadow-sm ring-1 ring-red-200 p-6 sm:p-12">
       <div class="flex flex-col items-center justify-center gap-4 text-center">
         <div class="w-14 h-14 rounded-full bg-red-50 flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -165,12 +253,12 @@
           </svg>
         </div>
         <div>
-          <h3 class="text-lg font-semibold text-slate-800">ডাটা লোড করা যায়নি</h3>
+          <h3 class="text-base sm:text-lg font-semibold text-slate-800">ডাটা লোড করা যায়নি</h3>
           <p id="errorMessage" class="text-sm text-slate-500 mt-1 max-w-md">data.json ফাইলটি লোড করতে সমস্যা হয়েছে।</p>
         </div>
         <button
           onclick="loadData()"
-          class="mt-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium transition"
+          class="mt-2 px-4 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white text-sm font-medium transition min-h-[44px]"
         >
           আবার চেষ্টা করুন
         </button>
@@ -180,35 +268,42 @@
     <!-- ============================================================
          এম্পটি স্টেট
          ============================================================ -->
-    <div id="emptyState" class="hidden bg-white rounded-2xl shadow-sm ring-1 ring-slate-200/70 p-12">
+    <div id="emptyState" class="hidden bg-white rounded-2xl shadow-sm ring-1 ring-slate-200/70 p-8 sm:p-12">
       <div class="flex flex-col items-center justify-center gap-3 text-center">
         <div class="w-14 h-14 rounded-full bg-slate-100 flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
           </svg>
         </div>
-        <h3 class="text-lg font-semibold text-slate-800">কোনো প্রোডাক্ট পাওয়া যায়নি</h3>
+        <h3 class="text-base sm:text-lg font-semibold text-slate-800">কোনো প্রোডাক্ট পাওয়া যায়নি</h3>
         <p class="text-sm text-slate-500">data.json ফাইলে কোনো ডাটা নেই অথবা সার্চের সাথে মিল নেই।</p>
       </div>
     </div>
 
     <!-- ============================================================
-         প্রোডাক্ট টেবিল
+         প্রোডাক্ট লিস্ট — মোবাইল: কার্ড ভিউ, ডেস্কটপ: টেবিল ভিউ
          ============================================================ -->
-    <div id="tableWrapper" class="hidden bg-white rounded-2xl shadow-sm ring-1 ring-slate-200/70 overflow-hidden">
-      <div class="overflow-x-auto">
-        <table class="w-full">
-          <thead>
-            <tr class="bg-gradient-to-r from-slate-800 to-slate-700 text-white">
-              <th class="px-4 sm:px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider whitespace-nowrap">ক্রম</th>
-              <th class="px-4 sm:px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider whitespace-nowrap">প্রোডাক্টের নাম</th>
-              <th class="px-4 sm:px-6 py-4 text-center text-xs font-semibold uppercase tracking-wider whitespace-nowrap">স্টক</th>
-              <th class="px-4 sm:px-6 py-4 text-right text-xs font-semibold uppercase tracking-wider whitespace-nowrap">বিক্রয়মূল্য (৳)</th>
-              <th class="px-4 sm:px-6 py-4 text-center text-xs font-semibold uppercase tracking-wider whitespace-nowrap">অ্যাকশন</th>
-            </tr>
-          </thead>
-          <tbody id="productTableBody" class="divide-y divide-slate-100"></tbody>
-        </table>
+    <div id="tableWrapper" class="hidden">
+
+      <!-- মোবাইল কার্ড ভিউ (ডিফল্ট) -->
+      <div id="cardView" class="md:hidden space-y-2.5"></div>
+
+      <!-- ডেস্কটপ টেবিল ভিউ -->
+      <div id="tableView" class="hidden md:block bg-white rounded-2xl shadow-sm ring-1 ring-slate-200/70 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr class="bg-gradient-to-r from-slate-800 to-slate-700 text-white">
+                <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider whitespace-nowrap">ক্রম</th>
+                <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider whitespace-nowrap">প্রোডাক্টের নাম</th>
+                <th class="px-6 py-4 text-center text-xs font-semibold uppercase tracking-wider whitespace-nowrap">স্টক</th>
+                <th class="px-6 py-4 text-right text-xs font-semibold uppercase tracking-wider whitespace-nowrap">বিক্রয়মূল্য (৳)</th>
+                <th class="px-6 py-4 text-center text-xs font-semibold uppercase tracking-wider whitespace-nowrap">অ্যাকশন</th>
+              </tr>
+            </thead>
+            <tbody id="productTableBody" class="divide-y divide-slate-100"></tbody>
+          </table>
+        </div>
       </div>
     </div>
   </main>
@@ -218,7 +313,7 @@
        ============================================================ -->
   <div
     id="discountModal"
-    class="hidden fixed inset-0 z-50 flex items-center justify-center p-4"
+    class="hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4"
     role="dialog"
     aria-modal="true"
     aria-labelledby="discountModalTitle"
@@ -226,14 +321,19 @@
     <!-- ব্যাকড্রপ -->
     <div id="discountBackdrop" class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm backdrop-enter"></div>
 
-    <!-- মডাল কন্টেন্ট -->
-    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg modal-enter max-h-[90vh] overflow-y-auto">
+    <!-- মডাল কন্টেন্ট — মোবাইলে নিচ থেকে বটম শিট স্টাইলে আসে -->
+    <div class="relative bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl w-full sm:max-w-lg modal-enter max-h-[92vh] sm:max-h-[90vh] overflow-y-auto">
+      <!-- মোবাইলে উপরে ড্র্যাগ হ্যান্ডেল -->
+      <div class="sm:hidden flex justify-center pt-2.5 pb-1">
+        <div class="w-10 h-1 bg-slate-300 rounded-full"></div>
+      </div>
+
       <!-- মডাল হেডার -->
-      <div class="bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-4 rounded-t-2xl flex items-center justify-between">
-        <h2 id="discountModalTitle" class="text-lg font-bold text-white">ডিসকাউন্ট হিসাব</h2>
+      <div class="bg-gradient-to-r from-emerald-600 to-teal-600 px-4 sm:px-6 py-3 sm:py-4 sm:rounded-t-2xl flex items-center justify-between">
+        <h2 id="discountModalTitle" class="text-base sm:text-lg font-bold text-white">ডিসকাউন্ট হিসাব</h2>
         <button
           onclick="closeDiscountModal()"
-          class="text-white/80 hover:text-white hover:bg-white/15 rounded-lg p-1.5 transition"
+          class="text-white/80 hover:text-white hover:bg-white/15 active:bg-white/25 rounded-lg p-2 transition min-w-[40px] min-h-[40px] flex items-center justify-center"
           aria-label="বন্ধ করুন"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -243,9 +343,9 @@
       </div>
 
       <!-- মডাল বডি -->
-      <div class="p-6 space-y-5">
+      <div class="p-4 sm:p-6 space-y-4 sm:space-y-5">
         <!-- প্রোডাক্ট তথ্য -->
-        <div class="bg-slate-50 rounded-xl p-4 ring-1 ring-slate-100">
+        <div class="bg-slate-50 rounded-xl p-3 sm:p-4 ring-1 ring-slate-100">
           <div class="flex items-start gap-3">
             <div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center flex-shrink-0">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -253,10 +353,10 @@
               </svg>
             </div>
             <div class="flex-1 min-w-0">
-              <p id="modalProductName" class="font-semibold text-slate-800 truncate">—</p>
-              <div class="flex items-center gap-4 mt-1 text-sm">
+              <p id="modalProductName" class="font-semibold text-slate-800 text-sm sm:text-base break-words">—</p>
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-xs sm:text-sm">
                 <span class="text-slate-500">স্টক: <span id="modalProductStock" class="font-medium text-slate-700">০</span> পিস</span>
-                <span class="text-slate-300">|</span>
+                <span class="text-slate-300 hidden sm:inline">|</span>
                 <span class="text-slate-500">বিক্রয়মূল্য: <span id="modalProductPrice" class="font-medium text-emerald-700">৳০</span></span>
               </div>
             </div>
@@ -266,25 +366,25 @@
         <!-- ডিসকাউন্ট টাইপ সিলেক্টর -->
         <div>
           <label class="block text-sm font-medium text-slate-700 mb-2">ডিসকাউন্টের ধরন</label>
-          <div class="grid grid-cols-2 gap-3">
+          <div class="grid grid-cols-2 gap-2 sm:gap-3">
             <button
               id="percentTypeBtn"
               onclick="setDiscountType('percent')"
-              class="px-4 py-2.5 rounded-lg border-2 border-emerald-500 bg-emerald-50 text-emerald-700 font-medium text-sm transition flex items-center justify-center gap-1.5"
+              class="px-3 py-3 sm:py-2.5 rounded-lg border-2 border-emerald-500 bg-emerald-50 text-emerald-700 font-medium text-sm transition flex items-center justify-center gap-1.5 min-h-[44px] active:scale-95"
             >
               পার্সেন্টেজ (%)
             </button>
             <button
               id="cashTypeBtn"
               onclick="setDiscountType('cash')"
-              class="px-4 py-2.5 rounded-lg border-2 border-slate-200 bg-white text-slate-600 font-medium text-sm transition flex items-center justify-center gap-1.5"
+              class="px-3 py-3 sm:py-2.5 rounded-lg border-2 border-slate-200 bg-white text-slate-600 font-medium text-sm transition flex items-center justify-center gap-1.5 min-h-[44px] active:scale-95"
             >
               নগদ টাকা (৳)
             </button>
           </div>
         </div>
 
-        <!-- ডিসকাউন্ট ইনপুট -->
+        <!-- ডিসকাউন্ট ইনপুট — মোবাইলে নাম্বার কিপ্যাড -->
         <div>
           <label for="discountInput" class="block text-sm font-medium text-slate-700 mb-2">
             ডিসকাউন্টের পরিমাণ <span id="discountUnitLabel" class="text-slate-400">(%)</span>
@@ -293,12 +393,13 @@
             <input
               id="discountInput"
               type="number"
+              inputmode="decimal"
               min="0"
               step="any"
               value="0"
               placeholder="0"
               oninput="calculateDiscount()"
-              class="w-full px-4 py-3 pr-12 rounded-lg border border-slate-200 bg-white text-slate-800 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+              class="w-full px-4 py-3 pr-12 rounded-lg border border-slate-200 bg-white text-slate-800 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition min-h-[52px]"
             />
             <span id="discountSuffix" class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 font-medium">%</span>
           </div>
@@ -306,7 +407,7 @@
         </div>
 
         <!-- ফলাফল — রিয়েল টাইম হিসাব -->
-        <div class="bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl p-5 ring-1 ring-slate-100 space-y-3">
+        <div class="bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl p-4 sm:p-5 ring-1 ring-slate-100 space-y-3">
           <div class="flex items-center justify-between text-sm">
             <span class="text-slate-500">মূল বিক্রয়মূল্য</span>
             <span id="resultOriginalPrice" class="font-medium text-slate-700">৳০</span>
@@ -327,10 +428,10 @@
       </div>
 
       <!-- মডাল ফুটার -->
-      <div class="bg-slate-50 px-6 py-4 rounded-b-2xl flex justify-end gap-3">
+      <div class="bg-slate-50 px-4 sm:px-6 py-3 sm:py-4 rounded-b-2xl flex justify-end gap-3 safe-bottom">
         <button
           onclick="closeDiscountModal()"
-          class="px-5 py-2.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 text-sm font-medium transition"
+          class="px-5 py-3 sm:py-2.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 active:bg-slate-100 text-sm font-medium transition min-h-[44px]"
         >
           বন্ধ করুন
         </button>
@@ -343,19 +444,24 @@
        ============================================================ -->
   <div
     id="buyPriceModal"
-    class="hidden fixed inset-0 z-50 flex items-center justify-center p-4"
+    class="hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4"
     role="dialog"
     aria-modal="true"
     aria-labelledby="buyPriceModalTitle"
   >
     <div id="buyPriceBackdrop" class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm backdrop-enter"></div>
 
-    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-sm modal-enter">
-      <div class="bg-gradient-to-r from-amber-500 to-orange-500 px-6 py-4 rounded-t-2xl flex items-center justify-between">
-        <h2 id="buyPriceModalTitle" class="text-lg font-bold text-white">কেনাদাম</h2>
+    <div class="relative bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl w-full sm:max-w-sm modal-enter">
+      <!-- মোবাইল ড্র্যাগ হ্যান্ডেল -->
+      <div class="sm:hidden flex justify-center pt-2.5 pb-1">
+        <div class="w-10 h-1 bg-slate-300 rounded-full"></div>
+      </div>
+
+      <div class="bg-gradient-to-r from-amber-500 to-orange-500 px-4 sm:px-6 py-3 sm:py-4 sm:rounded-t-2xl flex items-center justify-between">
+        <h2 id="buyPriceModalTitle" class="text-base sm:text-lg font-bold text-white">কেনাদাম</h2>
         <button
           onclick="closeBuyPriceModal()"
-          class="text-white/80 hover:text-white hover:bg-white/15 rounded-lg p-1.5 transition"
+          class="text-white/80 hover:text-white hover:bg-white/15 active:bg-white/25 rounded-lg p-2 transition min-w-[40px] min-h-[40px] flex items-center justify-center"
           aria-label="বন্ধ করুন"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -364,9 +470,9 @@
         </button>
       </div>
 
-      <div class="p-6 text-center">
+      <div class="p-4 sm:p-6 text-center">
         <p class="text-sm text-slate-500 mb-1">প্রোডাক্ট</p>
-        <p id="buyPriceProductName" class="font-semibold text-slate-800 mb-4">—</p>
+        <p id="buyPriceProductName" class="font-semibold text-slate-800 mb-4 break-words">—</p>
 
         <div class="bg-amber-50 ring-1 ring-amber-100 rounded-xl py-6 px-4 mb-4">
           <p class="text-xs text-amber-700/70 uppercase tracking-wider mb-1">কেনাদাম</p>
@@ -381,10 +487,10 @@
         </p>
       </div>
 
-      <div class="bg-slate-50 px-6 py-4 rounded-b-2xl flex justify-end">
+      <div class="bg-slate-50 px-4 sm:px-6 py-3 sm:py-4 rounded-b-2xl flex justify-end safe-bottom">
         <button
           onclick="closeBuyPriceModal()"
-          class="px-5 py-2.5 rounded-lg bg-amber-600 hover:bg-amber-700 text-white text-sm font-medium transition"
+          class="px-5 py-3 sm:py-2.5 rounded-lg bg-amber-600 hover:bg-amber-700 active:bg-amber-800 text-white text-sm font-medium transition min-h-[44px]"
         >
           বন্ধ করুন
         </button>
@@ -393,11 +499,11 @@
   </div>
 
   <!-- ============================================================
-       ফুটার
+       ফুটার — মোবাইলে ছোট
        ============================================================ -->
   <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
     <p class="text-xs text-slate-400">
-      data.json ফাইল থেকে ডাটা লোড হচ্ছে • GitHub Pages-এ হোস্ট করার জন্য উপযুক্ত
+      data.json থেকে লোড • GitHub Pages-এ হোস্ট করার উপযুক্ত
     </p>
   </footer>
 
@@ -408,9 +514,11 @@
     /* ============================================================
        গ্লোবাল স্টেট
        ============================================================ */
-    let allProducts = [];              // সম্পূর্ণ প্রোডাক্ট লিস্ট
-    let currentDiscountType = 'percent'; // 'percent' | 'cash'
-    let currentModalProduct = null;    // বর্তমানে মডালে খোলা প্রোডাক্ট
+    let allProducts = [];                    // সম্পূর্ণ প্রোডাক্ট লিস্ট (raw)
+    let currentDiscountType = 'percent';     // 'percent' | 'cash'
+    let currentModalProduct = null;          // বর্তমানে মডালে খোলা প্রোডাক্ট
+    let currentSort = 'name-asc';            // বর্তমান সর্ট অপশন
+    let mobileView = 'card';                 // 'card' | 'table' — মোবাইলে ভিউ টগল
 
     /* ============================================================
        DOM এলিমেন্ট রেফারেন্স
@@ -421,15 +529,21 @@
     const emptyState     = document.getElementById('emptyState');
     const tableWrapper   = document.getElementById('tableWrapper');
     const tableBody      = document.getElementById('productTableBody');
+    const cardView       = document.getElementById('cardView');
+    const tableView      = document.getElementById('tableView');
     const searchInput    = document.getElementById('searchInput');
+    const sortSelect     = document.getElementById('sortSelect');
     const totalCount     = document.getElementById('totalCount');
     const totalStock     = document.getElementById('totalStock');
+    const filteredCount  = document.getElementById('filteredCount');
     const refreshBtn     = document.getElementById('refreshBtn');
     const refreshIcon    = document.getElementById('refreshIcon');
+    const viewToggleBtn  = document.getElementById('viewToggleBtn');
+    const viewToggleIcon = document.getElementById('viewToggleIcon');
 
     /* ============================================================
        হেল্পার: ইংরেজি সংখ্যা → বাংলা সংখ্যা
-       শুধুমাত্র ডিসপ্লের জন্য, হিসাব-নিকাশে ইংরেজি সংখ্যা ব্যবহৃত হয়।
+       শুধুমাত্র ডিসপ্লের জন্য, হিসাবে ইংরেজি সংখ্যা ব্যবহৃত হয়।
        ============================================================ */
     function toBn(num) {
       const en = String(num);
@@ -462,16 +576,60 @@
     }
 
     /* ============================================================
+       সর্ট ও ফিল্টার লজিক
+       ------------------------------------------------------------
+       currentSort অপশন:
+         'name-asc'    → নাম A→Z (ডিফল্ট)
+         'name-desc'   → নাম Z→A
+         'stock-desc'  → স্টক বেশি→কম
+         'stock-asc'   → স্টock কম→বেশি
+         'price-asc'   → বিক্রয়মূল্য কম→বেশি
+         'price-desc'  → বিক্রয়মূল্য বেশি→কম
+
+       নোট: নাম সর্ট করার সময় localeCompare ব্যবহার করা হয়
+       যাতে বাংলা ও ইংরেজি উভয় ক্ষেত্রেই সঠিকভাবে সাজায়।
+       ============================================================ */
+    function sortAndFilter(products) {
+      // ১. সার্চ ফিল্টার প্রয়োগ
+      const query = searchInput.value.trim().toLowerCase();
+      let filtered = query
+        ? products.filter(p => p.name.toLowerCase().includes(query))
+        : [...products];
+
+      // ২. সর্ট প্রয়োগ
+      switch (currentSort) {
+        case 'name-asc':
+          // বাংলা + ইংরেজি মিশ্র লিস্ট সঠিকভাবে সাজানোর জন্য localeCompare
+          filtered.sort((a, b) => a.name.localeCompare(b.name, 'bn', { sensitivity: 'base', numeric: true }));
+          break;
+        case 'name-desc':
+          filtered.sort((a, b) => b.name.localeCompare(a.name, 'bn', { sensitivity: 'base', numeric: true }));
+          break;
+        case 'stock-desc':
+          filtered.sort((a, b) => b.quantity - a.quantity);
+          break;
+        case 'stock-asc':
+          filtered.sort((a, b) => a.quantity - b.quantity);
+          break;
+        case 'price-asc':
+          filtered.sort((a, b) => a.sellPrice - b.sellPrice);
+          break;
+        case 'price-desc':
+          filtered.sort((a, b) => b.sellPrice - a.sellPrice);
+          break;
+      }
+      return filtered;
+    }
+
+    /* ============================================================
        ডাটা লোড — fetch() দিয়ে data.json থেকে
        ============================================================ */
     async function loadData() {
       showState('loading');
-      // রিফ্রেশ আইকন ঘুরিয়ে ইঙ্গিত দেওয়া হলো যে লোড হচ্ছে
       refreshIcon.classList.add('animate-spin');
 
       try {
-        // ক্যাশিং এড়াতে ক্যাশ-বাস্টিং কোয়েরি প্যারামিটার যোগ করা হলো।
-        // এটি ডেভেলপমেন্ট ও প্রোডাকশন উভয় ক্ষেত্রেই ফ্রেশ ডাটা আনতে সাহায্য করে।
+        // ক্যাশিং এড়াতে ক্যাশ-বাস্টিং প্যারামিটার
         const url = 'data.json?t=' + Date.now();
 
         const response = await fetch(url, {
@@ -502,7 +660,7 @@
             sellPrice: Number(p.sellPrice) || 0,
           }));
 
-        renderTable(allProducts);
+        renderProducts();
       } catch (err) {
         console.error('ডাটা লোড এরর:', err);
         let msg = 'data.json ফাইল লোড করা যাচ্ছে না।';
@@ -523,18 +681,16 @@
     }
 
     /* ============================================================
-       টেবিল রেন্ডার
+       রেন্ডার — মূল ফাংশন
+       কার্ড ভিউ ও টেবিল ভিউ দুটোই আপডেট করে।
        ============================================================ */
-    function renderTable(products) {
-      // সার্চ ফিল্টার প্রয়োগ
-      const query = searchInput.value.trim().toLowerCase();
-      const filtered = query
-        ? products.filter(p => p.name.toLowerCase().includes(query))
-        : products;
+    function renderProducts() {
+      const filtered = sortAndFilter(allProducts);
 
-      // স্ট্যাটস আপডেট
-      totalCount.textContent = toBn(products.length);
-      totalStock.textContent  = toBn(products.reduce((s, p) => s + p.quantity, 0));
+      // স্ট্যাটস আপডেট — মোট ও দেখানো হচ্ছে
+      totalCount.textContent    = toBn(allProducts.length);
+      totalStock.textContent    = toBn(allProducts.reduce((s, p) => s + p.quantity, 0));
+      filteredCount.textContent = toBn(filtered.length);
 
       if (filtered.length === 0) {
         showState('empty');
@@ -543,12 +699,81 @@
 
       showState('table');
 
-      tableBody.innerHTML = filtered.map((p, idx) => `
+      // মোবাইল কার্ড ভিউ রেন্ডার
+      renderCardView(filtered);
+
+      // ডেস্কটপ টেবিল ভিউ রেন্ডার
+      renderTableView(filtered);
+
+      // মোবাইল ভিউ টগল অনুযায়ী সঠিক ভিউ দেখানো
+      applyMobileView();
+    }
+
+    /* ============================================================
+       মোবাইল কার্ড ভিউ রেন্ডার
+       মোবাইলে প্রতিটি প্রোডাক্ট একটি কার্ড হিসেবে দেখানো হয়।
+       কার্ডে থাকে: নাম, স্টক ব্যাজ, বিক্রয়মূল্য, অ্যাকশন বাটন।
+       ============================================================ */
+    function renderCardView(products) {
+      cardView.innerHTML = products.map((p, idx) => `
+        <div class="card-enter bg-white rounded-xl shadow-sm ring-1 ring-slate-200/70 p-3.5 active:bg-slate-50 transition" style="animation-delay: ${Math.min(idx, 10) * 30}ms;">
+          <!-- প্রথম রো: নাম + স্টক ব্যাজ -->
+          <div class="flex items-start justify-between gap-2 mb-2">
+            <div class="flex items-start gap-2 min-w-0 flex-1">
+              <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+              </div>
+              <p class="font-semibold text-slate-800 text-sm leading-snug break-words">${escapeHtml(p.name)}</p>
+            </div>
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium whitespace-nowrap flex-shrink-0 ${p.quantity > 0 ? 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-100' : 'bg-red-50 text-red-700 ring-1 ring-red-100'}">
+              ${toBn(p.quantity)} ${p.quantity > 0 ? 'পিস' : 'নেই'}
+            </span>
+          </div>
+
+          <!-- দ্বিতীয় রো: বিক্রয়মূল্য -->
+          <div class="flex items-center justify-between gap-2 mb-3 pl-10">
+            <span class="text-xs text-slate-500">বিক্রয়মূল্য</span>
+            <span class="font-bold text-slate-800 text-base">${formatTk(p.sellPrice)}</span>
+          </div>
+
+          <!-- তৃতীয় রো: অ্যাকশন বাটন -->
+          <div class="grid grid-cols-2 gap-2">
+            <button
+              onclick="openDiscountModal(${p.id})"
+              class="inline-flex items-center justify-center gap-1.5 px-2 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white text-xs font-medium transition shadow-sm min-h-[44px] active:scale-95"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+              </svg>
+              ডিসকাউন্ট
+            </button>
+            <button
+              onclick="openBuyPriceModal(${p.id})"
+              class="inline-flex items-center justify-center gap-1.5 px-2 py-2.5 rounded-lg bg-amber-50 hover:bg-amber-100 active:bg-amber-200 text-amber-700 text-xs font-medium transition ring-1 ring-amber-200 min-h-[44px] active:scale-95"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+              কেনাদাম
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    /* ============================================================
+       ডেস্কটপ টেবিল ভিউ রেন্ডার
+       ============================================================ */
+    function renderTableView(products) {
+      tableBody.innerHTML = products.map((p, idx) => `
         <tr class="hover:bg-emerald-50/40">
-          <td class="px-4 sm:px-6 py-4 text-sm text-slate-500 whitespace-nowrap">
+          <td class="px-6 py-4 text-sm text-slate-500 whitespace-nowrap">
             ${toBn(idx + 1)}
           </td>
-          <td class="px-4 sm:px-6 py-4">
+          <td class="px-6 py-4">
             <div class="flex items-center gap-3">
               <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center flex-shrink-0">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -558,17 +783,16 @@
               <span class="font-medium text-slate-800">${escapeHtml(p.name)}</span>
             </div>
           </td>
-          <td class="px-4 sm:px-6 py-4 text-center whitespace-nowrap">
+          <td class="px-6 py-4 text-center whitespace-nowrap">
             <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${p.quantity > 0 ? 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-100' : 'bg-red-50 text-red-700 ring-1 ring-red-100'}">
               ${toBn(p.quantity)} ${p.quantity > 0 ? 'পিস' : 'স্টক নেই'}
             </span>
           </td>
-          <td class="px-4 sm:px-6 py-4 text-right whitespace-nowrap">
+          <td class="px-6 py-4 text-right whitespace-nowrap">
             <span class="font-semibold text-slate-800">${formatTk(p.sellPrice)}</span>
           </td>
-          <td class="px-4 sm:px-6 py-4 text-center whitespace-nowrap">
+          <td class="px-6 py-4 text-center whitespace-nowrap">
             <div class="flex items-center justify-center gap-2">
-              <!-- ডিসকাউন্ট হিসাব বাটন -->
               <button
                 onclick="openDiscountModal(${p.id})"
                 class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium transition shadow-sm"
@@ -578,7 +802,6 @@
                 </svg>
                 ডিসকাউন্ট হিসাব
               </button>
-              <!-- কেনাদাম দেখুন বাটন -->
               <button
                 onclick="openBuyPriceModal(${p.id})"
                 class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-700 text-xs font-medium transition ring-1 ring-amber-200"
@@ -594,6 +817,37 @@
           </td>
         </tr>
       `).join('');
+    }
+
+    /* ============================================================
+       মোবাইল ভিউ টগল — কার্ড বনাম টেবিল
+       মোবাইলে ডিফল্ট কার্ড ভিউ, টগল বাটনে টেবিল ভিউতে যাওয়া যায়।
+       ============================================================ */
+    function applyMobileView() {
+      // শুধু মোবাইলে (md breakpoint এর নিচে) এই লজিক কাজ করে
+      if (window.innerWidth >= 768) {
+        // ডেস্কটপে সবসময় টেবিল ভিউ
+        cardView.classList.add('hidden');
+        tableView.classList.remove('hidden');
+        return;
+      }
+
+      // মোবাইল: mobileView অনুযায়ী
+      if (mobileView === 'card') {
+        cardView.classList.remove('hidden');
+        tableView.classList.add('hidden');
+        viewToggleIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />';
+      } else {
+        cardView.classList.add('hidden');
+        tableView.classList.remove('hidden');
+        // টেবিল ভিউ আইকন — গ্রিড
+        viewToggleIcon.innerHTML = '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>';
+      }
+    }
+
+    function toggleMobileView() {
+      mobileView = mobileView === 'card' ? 'table' : 'card';
+      applyMobileView();
     }
 
     /* ============================================================
@@ -614,21 +868,17 @@
 
       currentModalProduct = product;
 
-      // মডালে প্রোডাক্ট তথ্য ভরাট করা
       document.getElementById('modalProductName').textContent  = product.name;
       document.getElementById('modalProductStock').textContent  = toBn(product.quantity);
       document.getElementById('modalProductPrice').textContent = formatTk(product.sellPrice);
 
-      // ডিসকাউন্ট রিসেট
       document.getElementById('discountInput').value = 0;
       setDiscountType('percent');
 
-      // মডাল দেখানো
       const modal = document.getElementById('discountModal');
       modal.classList.remove('hidden');
       document.body.classList.add('modal-open');
 
-      // ফোকাস ইনপুটে দেওয়া
       setTimeout(() => document.getElementById('discountInput').focus(), 100);
     }
 
@@ -650,20 +900,19 @@
       const hint       = document.getElementById('discountHint');
 
       if (type === 'percent') {
-        percentBtn.className = 'px-4 py-2.5 rounded-lg border-2 border-emerald-500 bg-emerald-50 text-emerald-700 font-medium text-sm transition flex items-center justify-center gap-1.5';
-        cashBtn.className    = 'px-4 py-2.5 rounded-lg border-2 border-slate-200 bg-white text-slate-600 font-medium text-sm transition flex items-center justify-center gap-1.5';
+        percentBtn.className = 'px-3 py-3 sm:py-2.5 rounded-lg border-2 border-emerald-500 bg-emerald-50 text-emerald-700 font-medium text-sm transition flex items-center justify-center gap-1.5 min-h-[44px] active:scale-95';
+        cashBtn.className    = 'px-3 py-3 sm:py-2.5 rounded-lg border-2 border-slate-200 bg-white text-slate-600 font-medium text-sm transition flex items-center justify-center gap-1.5 min-h-[44px] active:scale-95';
         unitLabel.textContent = '(%)';
         suffix.textContent = '%';
         hint.textContent = 'সর্বোচ্চ ১০০% পর্যন্ত দেওয়া যাবে।';
       } else {
-        cashBtn.className    = 'px-4 py-2.5 rounded-lg border-2 border-emerald-500 bg-emerald-50 text-emerald-700 font-medium text-sm transition flex items-center justify-center gap-1.5';
-        percentBtn.className = 'px-4 py-2.5 rounded-lg border-2 border-slate-200 bg-white text-slate-600 font-medium text-sm transition flex items-center justify-center gap-1.5';
+        cashBtn.className    = 'px-3 py-3 sm:py-2.5 rounded-lg border-2 border-emerald-500 bg-emerald-50 text-emerald-700 font-medium text-sm transition flex items-center justify-center gap-1.5 min-h-[44px] active:scale-95';
+        percentBtn.className = 'px-3 py-3 sm:py-2.5 rounded-lg border-2 border-slate-200 bg-white text-slate-600 font-medium text-sm transition flex items-center justify-center gap-1.5 min-h-[44px] active:scale-95';
         unitLabel.textContent = '(৳)';
         suffix.textContent = '৳';
         hint.textContent = 'বিক্রয়মূল্যের বেশি ডিসকাউন্ট দেওয়া যাবে না।';
       }
 
-      // টাইপ পরিবর্তনের পর আবার হিসাব করা
       calculateDiscount();
     }
 
@@ -677,7 +926,6 @@
       const input = document.getElementById('discountInput');
       let discountValue = parseFloat(input.value) || 0;
 
-      // নেগেটিভ ভ্যালু রোধ
       if (discountValue < 0) {
         discountValue = 0;
         input.value = 0;
@@ -686,14 +934,12 @@
       let discountAmount = 0;
 
       if (currentDiscountType === 'percent') {
-        // পার্সেন্টেজ ভ্যালিডেশন — সর্বোচ্চ ১০০%
         if (discountValue > 100) {
           discountValue = 100;
           input.value = 100;
         }
         discountAmount = (originalPrice * discountValue) / 100;
       } else {
-        // নগদ টাকা ভ্যালিডেশন — বিক্রয়মূল্যের বেশি হতে পারবে না
         if (discountValue > originalPrice) {
           discountValue = originalPrice;
           input.value = originalPrice;
@@ -701,11 +947,9 @@
         discountAmount = discountValue;
       }
 
-      // ফাইনাল মূল্য ও অন্যান্য ভ্যালু হিসাব
       const finalPrice = Math.max(0, originalPrice - discountAmount);
       const savingsPercent = originalPrice > 0 ? (discountAmount / originalPrice) * 100 : 0;
 
-      // UI আপডেট
       document.getElementById('resultOriginalPrice').textContent   = formatTk(originalPrice);
       document.getElementById('resultDiscountAmount').textContent   = '−' + formatTk(discountAmount);
       document.getElementById('resultFinalPrice').textContent      = formatTk(finalPrice);
@@ -735,15 +979,31 @@
     /* ============================================================
        ইভেন্ট লিসেনার
        ============================================================ */
-    // সার্চ ইনপুট ডিবাউন্সিং
+    // সার্চ ইনপুট ডিবাউন্সিং — টাইপিং থামলে ২০০ms পর রেন্ডার
     let searchTimer;
     searchInput.addEventListener('input', () => {
       clearTimeout(searchTimer);
-      searchTimer = setTimeout(() => renderTable(allProducts), 200);
+      searchTimer = setTimeout(() => renderProducts(), 200);
+    });
+
+    // সর্ট ড্রপডাউন পরিবর্তন
+    sortSelect.addEventListener('change', () => {
+      currentSort = sortSelect.value;
+      renderProducts();
     });
 
     // রিফ্রেশ বাটন
     refreshBtn.addEventListener('click', loadData);
+
+    // মোবাইল ভিউ টগল বাটন
+    viewToggleBtn.addEventListener('click', toggleMobileView);
+
+    // উইন্ডো রেসাইজ — ডেস্কটপে গেলে অটো টেবিল ভিউ
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => applyMobileView(), 150);
+    });
 
     // ESC কী দিয়ে মডাল বন্ধ
     document.addEventListener('keydown', (e) => {
