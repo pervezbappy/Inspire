@@ -1,213 +1,770 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inspire Engineering</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>দোকান স্টক ও বিক্রয়মূল্য ব্যবস্থাপনা</title>
+
+  <!-- ============================================================
+       Tailwind CSS CDN — প্রোডাকশনে কম্পাইল করার প্রয়োজন নেই,
+       GitHub Pages-এ সরাসরি কাজ করবে।
+       ============================================================ -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- বাংলা ফন্ট — Noto Sans Bengali, দেখতে ক্লিন ও প্রফেশনাল -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind কনফিগ — কাস্টম ফন্ট ফ্যামিলি যোগ করা হলো -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            bengali: ['"Hind Siliguri"', '"Noto Sans Bengali"', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* বডির জন্য বাংলা ফন্ট ডিফল্ট করা হলো */
+    body {
+      font-family: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
+    }
+
+    /* কাস্টম স্ক্রলবার — প্রিমিয়াম লুক */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
+    /* মডাল ওপেন হলে ব্যাকগ্রাউন্ড স্ক্রল বন্ধ করা */
+    body.modal-open { overflow: hidden; }
+
+    /* মডাল অ্যানিমেশন */
+    .modal-enter {
+      animation: modalIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(20px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* ব্যাকড্রপ অ্যানিমেশন */
+    .backdrop-enter {
+      animation: fadeIn 0.2s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* টেবিল রো হোভার ট্রানজিশন */
+    tbody tr {
+      transition: background-color 0.15s ease;
+    }
+  </style>
 </head>
-<body class="bg-slate-100 text-slate-800 min-h-screen py-8 px-4">
 
-    <div class="max-w-4xl mx-auto">
-        <!-- Header -->
-        <header class="bg-gradient-to-r from-indigo-600 to-blue-600 shadow-lg rounded-2xl p-6 mb-6 text-white flex justify-between items-center">
-            <div>
-                <h1 class="text-2xl font-bold">🏪 আমার দোকান স্টক ও ডিসকাউন্ট</h1>
-                <p class="text-xs text-indigo-100 mt-1">প্রোডাক্টে ক্লিক করে আলাদাভাবে ডিসকাউন্ট দিন</p>
-            </div>
-            <div class="bg-white/10 backdrop-blur-md px-4 py-2 rounded-xl text-right">
-                <span id="totalProducts" class="text-lg font-bold">0</span>
-                <p class="text-xs text-indigo-200">মোট প্রডাক্ট</p>
-            </div>
-        </header>
+<body class="font-bengali bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 min-h-screen">
 
-        <!-- Main Card -->
-        <div class="bg-white shadow-xl rounded-2xl overflow-hidden border border-slate-100">
-            <div class="p-5 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
-                <h2 class="font-semibold text-slate-700 text-lg">📦 প্রডাক্ট তালিকা (ডিসকাউন্ট দিতে নামের উপর ক্লিক করুন)</h2>
-                <span id="loadingStatus" class="text-xs text-slate-400 font-medium">লোড হচ্ছে...</span>
-            </div>
-            
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="bg-slate-100/70 text-slate-600 text-xs uppercase tracking-wider">
-                            <th class="py-3.5 px-5">প্রোডাক্টের নাম</th>
-                            <th class="py-3.5 px-5 text-center">স্টক পরিমাণ</th>
-                            <th class="py-3.5 px-5 text-right">মূল্য (৳)</th>
-                            <th class="py-3.5 px-5 text-center">অ্যাকশন</th>
-                        </tr>
-                    </thead>
-                    <tbody id="productTableBody" class="divide-y divide-slate-100 text-sm">
-                        <!-- ডাইনামিকালি লোড হবে -->
-                    </tbody>
-                </table>
-            </div>
+  <!-- ============================================================
+       হেডার — গ্রেডিয়েন্ট + শ্যাডো
+       ============================================================ -->
+  <header class="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 shadow-lg sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <!-- লোgo আইকন -->
+          <div class="w-11 h-11 rounded-xl bg-white/15 backdrop-blur-sm flex items-center justify-center ring-1 ring-white/25">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-xl sm:text-2xl font-bold text-white tracking-tight">স্টক ও বিক্রয়মূল্য ব্যবস্থাপনা</h1>
+            <p class="text-emerald-50/90 text-xs sm:text-sm">আপনার দোকানের প্রোডাক্ট ও ডিসকাউন্ট হিসাব</p>
+          </div>
         </div>
+
+        <!-- রিফ্রেশ বাটন -->
+        <button
+          id="refreshBtn"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/15 hover:bg-white/25 text-white text-sm font-medium ring-1 ring-white/25 transition"
+        >
+          <svg id="refreshIcon" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          রিফ্রেশ
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       মূল কন্টেন্ট
+       ============================================================ -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+
+    <!-- সার্চ ও স্ট্যাটস বার -->
+    <div class="bg-white rounded-2xl shadow-sm ring-1 ring-slate-200/70 p-4 sm:p-5 mb-6">
+      <div class="flex flex-col lg:flex-row lg:items-center gap-4">
+        <!-- সার্চ ইনপুট -->
+        <div class="relative flex-1">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="প্রোডাক্টের নাম দিয়ে খুঁজুন..."
+            class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+          />
+        </div>
+
+        <!-- স্ট্যাটস -->
+        <div class="flex gap-3">
+          <div class="px-4 py-2.5 rounded-lg bg-emerald-50 ring-1 ring-emerald-100">
+            <p class="text-xs text-emerald-700/70">মোট প্রোডাক্ট</p>
+            <p id="totalCount" class="text-lg font-bold text-emerald-700">০</p>
+          </div>
+          <div class="px-4 py-2.5 rounded-lg bg-teal-50 ring-1 ring-teal-100">
+            <p class="text-xs text-teal-700/70">মোট স্টক</p>
+            <p id="totalStock" class="text-lg font-bold text-teal-700">০</p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Modal / Drawer for Product Discount -->
-    <div id="discountModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
-        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 transform transition-all">
-            <div class="flex justify-between items-center mb-4">
-                <h3 id="modalProductName" class="text-lg font-bold text-slate-800">প্রোডাক্টের নাম</h3>
-                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold">&times;</button>
-            </div>
-
-            <div class="bg-slate-50 p-4 rounded-xl mb-4 space-y-2">
-                <div class="flex justify-between text-sm">
-                    <span class="text-slate-500">স্টক আছে:</span>
-                    <span id="modalStock" class="font-semibold text-slate-700">0</span>
-                </div>
-                <div class="flex justify-between text-sm">
-                    <span class="text-slate-500">মূল বিক্রয়মূল্য:</span>
-                    <span id="modalOriginalPrice" class="font-semibold text-slate-700">৳0</span>
-                </div>
-            </div>
-
-            <!-- Discount Inputs -->
-            <div class="space-y-4 mb-6">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-600 uppercase mb-1.5">ডিসকাউন্ট টাইপ</label>
-                    <div class="grid grid-cols-2 gap-2">
-                        <button type="button" id="typePercent" onclick="setDiscountType('percent')" class="py-2 text-xs font-semibold rounded-lg border transition-all bg-indigo-50 border-indigo-500 text-indigo-600">পার্সেন্টেজ (%)</button>
-                        <button type="button" id="typeFixed" onclick="setDiscountType('fixed')" class="py-2 text-xs font-semibold rounded-lg border transition-all bg-white border-slate-200 text-slate-600">নির্দিষ্ট টাকা (৳)</button>
-                    </div>
-                </div>
-
-                <div>
-                    <label id="discountLabel" class="block text-xs font-semibold text-slate-600 uppercase mb-1.5">ডিসকাউন্ট পরিমাণ (%)</label>
-                    <input type="number" id="modalDiscountValue" value="0" oninput="calculateDiscount()" class="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 font-semibold">
-                </div>
-
-                <div class="bg-indigo-50/60 border border-indigo-100 p-4 rounded-xl flex justify-between items-center">
-                    <span class="text-sm font-medium text-indigo-900">ডিসকাউন্ট পরবর্তী মূল্য:</span>
-                    <span id="modalFinalPrice" class="text-xl font-extrabold text-indigo-600">৳0</span>
-                </div>
-            </div>
-
-            <div class="flex gap-3">
-                <button onclick="closeModal()" class="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-sm transition-all">বন্ধ করুন</button>
-            </div>
-        </div>
+    <!-- ============================================================
+         লোডিং স্টেট
+         ============================================================ -->
+    <div id="loadingState" class="hidden bg-white rounded-2xl shadow-sm ring-1 ring-slate-200/70 p-12">
+      <div class="flex flex-col items-center justify-center gap-4">
+        <div class="w-12 h-12 border-4 border-emerald-200 border-t-emerald-600 rounded-full animate-spin"></div>
+        <p class="text-slate-500 text-sm">ডাটা লোড হচ্ছে...</p>
+      </div>
     </div>
 
-    <!-- JavaScript logic -->
-    <script>
-        const jsonUrl = 'data.json';
-        let allProducts = [];
-        let currentActiveProduct = null;
-        let discountMode = 'percent'; // 'percent' বা 'fixed'
+    <!-- ============================================================
+         এরর স্টেট
+         ============================================================ -->
+    <div id="errorState" class="hidden bg-white rounded-2xl shadow-sm ring-1 ring-red-200 p-8 sm:p-12">
+      <div class="flex flex-col items-center justify-center gap-4 text-center">
+        <div class="w-14 h-14 rounded-full bg-red-50 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-slate-800">ডাটা লোড করা যায়নি</h3>
+          <p id="errorMessage" class="text-sm text-slate-500 mt-1 max-w-md">data.json ফাইলটি লোড করতে সমস্যা হয়েছে।</p>
+        </div>
+        <button
+          onclick="loadData()"
+          class="mt-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium transition"
+        >
+          আবার চেষ্টা করুন
+        </button>
+      </div>
+    </div>
 
-        async function loadProducts() {
-            const statusEl = document.getElementById('loadingStatus');
-            try {
-                const response = await fetch(jsonUrl);
-                if (!response.ok) throw new Error('ফাইল পাওয়া যায়নি');
-                
-                allProducts = await response.json();
-                document.getElementById('totalProducts').textContent = allProducts.length;
-                statusEl.textContent = 'সফলভাবে লোড হয়েছে ✅';
-                
-                renderTable(allProducts);
-            } catch (error) {
-                console.error(error);
-                statusEl.textContent = '❌ ডাটা লোড ব্যর্থ!';
-                document.getElementById('productTableBody').innerHTML = `
-                    <tr><td colspan="4" class="text-center py-8 text-red-500 font-medium">data.json ফাইলটি পাওয়া যায়নি বা লিংকে সমস্যা আছে।</td></tr>
-                `;
-            }
+    <!-- ============================================================
+         এম্পটি স্টেট
+         ============================================================ -->
+    <div id="emptyState" class="hidden bg-white rounded-2xl shadow-sm ring-1 ring-slate-200/70 p-12">
+      <div class="flex flex-col items-center justify-center gap-3 text-center">
+        <div class="w-14 h-14 rounded-full bg-slate-100 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-slate-800">কোনো প্রোডাক্ট পাওয়া যায়নি</h3>
+        <p class="text-sm text-slate-500">data.json ফাইলে কোনো ডাটা নেই অথবা সার্চের সাথে মিল নেই।</p>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         প্রোডাক্ট টেবিল
+         ============================================================ -->
+    <div id="tableWrapper" class="hidden bg-white rounded-2xl shadow-sm ring-1 ring-slate-200/70 overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="bg-gradient-to-r from-slate-800 to-slate-700 text-white">
+              <th class="px-4 sm:px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider whitespace-nowrap">ক্রম</th>
+              <th class="px-4 sm:px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider whitespace-nowrap">প্রোডাক্টের নাম</th>
+              <th class="px-4 sm:px-6 py-4 text-center text-xs font-semibold uppercase tracking-wider whitespace-nowrap">স্টক</th>
+              <th class="px-4 sm:px-6 py-4 text-right text-xs font-semibold uppercase tracking-wider whitespace-nowrap">বিক্রয়মূল্য (৳)</th>
+              <th class="px-4 sm:px-6 py-4 text-center text-xs font-semibold uppercase tracking-wider whitespace-nowrap">অ্যাকশন</th>
+            </tr>
+          </thead>
+          <tbody id="productTableBody" class="divide-y divide-slate-100"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============================================================
+       ডিসকাউন্ট মডাল
+       ============================================================ -->
+  <div
+    id="discountModal"
+    class="hidden fixed inset-0 z-50 flex items-center justify-center p-4"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="discountModalTitle"
+  >
+    <!-- ব্যাকড্রপ -->
+    <div id="discountBackdrop" class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm backdrop-enter"></div>
+
+    <!-- মডাল কন্টেন্ট -->
+    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg modal-enter max-h-[90vh] overflow-y-auto">
+      <!-- মডাল হেডার -->
+      <div class="bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-4 rounded-t-2xl flex items-center justify-between">
+        <h2 id="discountModalTitle" class="text-lg font-bold text-white">ডিসকাউন্ট হিসাব</h2>
+        <button
+          onclick="closeDiscountModal()"
+          class="text-white/80 hover:text-white hover:bg-white/15 rounded-lg p-1.5 transition"
+          aria-label="বন্ধ করুন"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- মডাল বডি -->
+      <div class="p-6 space-y-5">
+        <!-- প্রোডাক্ট তথ্য -->
+        <div class="bg-slate-50 rounded-xl p-4 ring-1 ring-slate-100">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p id="modalProductName" class="font-semibold text-slate-800 truncate">—</p>
+              <div class="flex items-center gap-4 mt-1 text-sm">
+                <span class="text-slate-500">স্টক: <span id="modalProductStock" class="font-medium text-slate-700">০</span> পিস</span>
+                <span class="text-slate-300">|</span>
+                <span class="text-slate-500">বিক্রয়মূল্য: <span id="modalProductPrice" class="font-medium text-emerald-700">৳০</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ডিসকাউন্ট টাইপ সিলেক্টর -->
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">ডিসকাউন্টের ধরন</label>
+          <div class="grid grid-cols-2 gap-3">
+            <button
+              id="percentTypeBtn"
+              onclick="setDiscountType('percent')"
+              class="px-4 py-2.5 rounded-lg border-2 border-emerald-500 bg-emerald-50 text-emerald-700 font-medium text-sm transition flex items-center justify-center gap-1.5"
+            >
+              পার্সেন্টেজ (%)
+            </button>
+            <button
+              id="cashTypeBtn"
+              onclick="setDiscountType('cash')"
+              class="px-4 py-2.5 rounded-lg border-2 border-slate-200 bg-white text-slate-600 font-medium text-sm transition flex items-center justify-center gap-1.5"
+            >
+              নগদ টাকা (৳)
+            </button>
+          </div>
+        </div>
+
+        <!-- ডিসকাউন্ট ইনপুট -->
+        <div>
+          <label for="discountInput" class="block text-sm font-medium text-slate-700 mb-2">
+            ডিসকাউন্টের পরিমাণ <span id="discountUnitLabel" class="text-slate-400">(%)</span>
+          </label>
+          <div class="relative">
+            <input
+              id="discountInput"
+              type="number"
+              min="0"
+              step="any"
+              value="0"
+              placeholder="0"
+              oninput="calculateDiscount()"
+              class="w-full px-4 py-3 pr-12 rounded-lg border border-slate-200 bg-white text-slate-800 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+            />
+            <span id="discountSuffix" class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 font-medium">%</span>
+          </div>
+          <p id="discountHint" class="text-xs text-slate-400 mt-1.5">সর্বোচ্চ ১০০% পর্যন্ত দেওয়া যাবে।</p>
+        </div>
+
+        <!-- ফলাফল — রিয়েল টাইম হিসাব -->
+        <div class="bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl p-5 ring-1 ring-slate-100 space-y-3">
+          <div class="flex items-center justify-between text-sm">
+            <span class="text-slate-500">মূল বিক্রয়মূল্য</span>
+            <span id="resultOriginalPrice" class="font-medium text-slate-700">৳০</span>
+          </div>
+          <div class="flex items-center justify-between text-sm">
+            <span class="text-slate-500">ডিসকাউন্ট</span>
+            <span id="resultDiscountAmount" class="font-medium text-red-600">−৳০</span>
+          </div>
+          <div class="border-t border-slate-200 pt-3 flex items-center justify-between">
+            <span class="text-slate-700 font-medium">ফাইনাল মূল্য</span>
+            <span id="resultFinalPrice" class="text-xl font-bold text-emerald-700">৳০</span>
+          </div>
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-slate-400">গ্রাহক সাশ্রয়</span>
+            <span id="resultSavings" class="text-slate-500">০% সাশ্রয়</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- মডাল ফুটার -->
+      <div class="bg-slate-50 px-6 py-4 rounded-b-2xl flex justify-end gap-3">
+        <button
+          onclick="closeDiscountModal()"
+          class="px-5 py-2.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 text-sm font-medium transition"
+        >
+          বন্ধ করুন
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       কেনাদাম দেখার মডাল (প্রাইভেসি ফিচার)
+       ============================================================ -->
+  <div
+    id="buyPriceModal"
+    class="hidden fixed inset-0 z-50 flex items-center justify-center p-4"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="buyPriceModalTitle"
+  >
+    <div id="buyPriceBackdrop" class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm backdrop-enter"></div>
+
+    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-sm modal-enter">
+      <div class="bg-gradient-to-r from-amber-500 to-orange-500 px-6 py-4 rounded-t-2xl flex items-center justify-between">
+        <h2 id="buyPriceModalTitle" class="text-lg font-bold text-white">কেনাদাম</h2>
+        <button
+          onclick="closeBuyPriceModal()"
+          class="text-white/80 hover:text-white hover:bg-white/15 rounded-lg p-1.5 transition"
+          aria-label="বন্ধ করুন"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="p-6 text-center">
+        <p class="text-sm text-slate-500 mb-1">প্রোডাক্ট</p>
+        <p id="buyPriceProductName" class="font-semibold text-slate-800 mb-4">—</p>
+
+        <div class="bg-amber-50 ring-1 ring-amber-100 rounded-xl py-6 px-4 mb-4">
+          <p class="text-xs text-amber-700/70 uppercase tracking-wider mb-1">কেনাদাম</p>
+          <p id="buyPriceValue" class="text-3xl font-bold text-amber-700">৳০</p>
+        </div>
+
+        <p class="text-xs text-slate-400 flex items-center justify-center gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+          এটি গোপনীয় তথ্য — বন্ধ করার পর আর দেখা যাবে না।
+        </p>
+      </div>
+
+      <div class="bg-slate-50 px-6 py-4 rounded-b-2xl flex justify-end">
+        <button
+          onclick="closeBuyPriceModal()"
+          class="px-5 py-2.5 rounded-lg bg-amber-600 hover:bg-amber-700 text-white text-sm font-medium transition"
+        >
+          বন্ধ করুন
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       ফুটার
+       ============================================================ -->
+  <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
+    <p class="text-xs text-slate-400">
+      data.json ফাইল থেকে ডাটা লোড হচ্ছে • GitHub Pages-এ হোস্ট করার জন্য উপযুক্ত
+    </p>
+  </footer>
+
+  <!-- ============================================================
+       JavaScript — সম্পূর্ণ লজিক
+       ============================================================ -->
+  <script>
+    /* ============================================================
+       গ্লোবাল স্টেট
+       ============================================================ */
+    let allProducts = [];              // সম্পূর্ণ প্রোডাক্ট লিস্ট
+    let currentDiscountType = 'percent'; // 'percent' | 'cash'
+    let currentModalProduct = null;    // বর্তমানে মডালে খোলা প্রোডাক্ট
+
+    /* ============================================================
+       DOM এলিমেন্ট রেফারেন্স
+       ============================================================ */
+    const loadingState   = document.getElementById('loadingState');
+    const errorState     = document.getElementById('errorState');
+    const errorMessage   = document.getElementById('errorMessage');
+    const emptyState     = document.getElementById('emptyState');
+    const tableWrapper   = document.getElementById('tableWrapper');
+    const tableBody      = document.getElementById('productTableBody');
+    const searchInput    = document.getElementById('searchInput');
+    const totalCount     = document.getElementById('totalCount');
+    const totalStock     = document.getElementById('totalStock');
+    const refreshBtn     = document.getElementById('refreshBtn');
+    const refreshIcon    = document.getElementById('refreshIcon');
+
+    /* ============================================================
+       হেল্পার: ইংরেজি সংখ্যা → বাংলা সংখ্যা
+       শুধুমাত্র ডিসপ্লের জন্য, হিসাব-নিকাশে ইংরেজি সংখ্যা ব্যবহৃত হয়।
+       ============================================================ */
+    function toBn(num) {
+      const en = String(num);
+      const bnDigits = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+      return en.replace(/[0-9]/g, d => bnDigits[+d]);
+    }
+
+    /* ============================================================
+       হেল্পার: টাকা ফরম্যাট (৳ চিহ্ন সহ)
+       ============================================================ */
+    function formatTk(amount) {
+      const rounded = Math.round((Number(amount) || 0) * 100) / 100;
+      return '৳' + toBn(rounded.toLocaleString('en-US'));
+    }
+
+    /* ============================================================
+       হেল্পার: স্টেট টগল করার ফাংশন
+       ============================================================ */
+    function showState(state) {
+      loadingState.classList.add('hidden');
+      errorState.classList.add('hidden');
+      emptyState.classList.add('hidden');
+      tableWrapper.classList.add('hidden');
+      switch (state) {
+        case 'loading': loadingState.classList.remove('hidden'); break;
+        case 'error':   errorState.classList.remove('hidden');   break;
+        case 'empty':   emptyState.classList.remove('hidden');   break;
+        case 'table':   tableWrapper.classList.remove('hidden'); break;
+      }
+    }
+
+    /* ============================================================
+       ডাটা লোড — fetch() দিয়ে data.json থেকে
+       ============================================================ */
+    async function loadData() {
+      showState('loading');
+      // রিফ্রেশ আইকন ঘুরিয়ে ইঙ্গিত দেওয়া হলো যে লোড হচ্ছে
+      refreshIcon.classList.add('animate-spin');
+
+      try {
+        // ক্যাশিং এড়াতে ক্যাশ-বাস্টিং কোয়েরি প্যারামিটার যোগ করা হলো।
+        // এটি ডেভেলপমেন্ট ও প্রোডাকশন উভয় ক্ষেত্রেই ফ্রেশ ডাটা আনতে সাহায্য করে।
+        const url = 'data.json?t=' + Date.now();
+
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: { 'Accept': 'application/json' },
+          cache: 'no-cache',
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText || 'সার্ভার এরর'}`);
         }
 
-        function renderTable(products) {
-            const tbody = document.getElementById('productTableBody');
-            tbody.innerHTML = '';
+        const data = await response.json();
 
-            products.forEach((item, index) => {
-                const tr = document.createElement('tr');
-                tr.className = 'hover:bg-slate-50/80 transition-colors group cursor-pointer';
-                tr.innerHTML = `
-                    <td class="py-4 px-5 font-semibold text-slate-900 group-hover:text-indigo-600 transition-colors">
-                        ${item.name}
-                    </td>
-                    <td class="py-4 px-5 text-center">
-                        <span class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg text-xs font-bold">${item.quantity} পিস</span>
-                    </td>
-                    <td class="py-4 px-5 text-right font-bold text-slate-700">৳${parseFloat(item.sellPrice).toFixed(2)}</td>
-                    <td class="py-4 px-5 text-center">
-                        <button onclick="openModal(${index})" class="px-3 py-1.5 bg-indigo-50 hover:bg-indigo-600 text-indigo-600 hover:text-white rounded-lg text-xs font-semibold transition-all">
-                            ডিসকাউন্ট হিসাব
-                        </button>
-                    </td>
-                `;
-                // পুরো রো-তে ক্লিক করলেও মডাল ওপেন হবে
-                tr.onclick = (e) => {
-                    if(e.target.tagName !== 'BUTTON') openModal(index);
-                };
-                tbody.appendChild(tr);
-            });
+        // ভ্যালিডেশন — ডাটা অ্যারে হতে হবে
+        if (!Array.isArray(data)) {
+          throw new Error('data.json ফাইলের ফরম্যাট সঠিক নয় — প্রত্যাশিত একটি অ্যারে।');
         }
 
-        // মডাল কন্ট্রোল
-        function openModal(index) {
-            currentActiveProduct = allProducts[index];
-            document.getElementById('modalProductName').textContent = currentActiveProduct.name;
-            document.getElementById('modalStock').textContent = currentActiveProduct.quantity + ' পিস';
-            document.getElementById('modalOriginalPrice').textContent = '৳' + parseFloat(currentActiveProduct.sellPrice).toFixed(2);
-            document.getElementById('modalDiscountValue').value = 0;
-            
-            setDiscountType('percent');
-            calculateDiscount();
-            
-            document.getElementById('discountModal').classList.remove('hidden');
+        // প্রতিটি প্রোডাক্টের ফিল্ড ভ্যালিডেশন
+        allProducts = data
+          .filter(p => p && typeof p === 'object')
+          .map((p, idx) => ({
+            id: idx,
+            name:      String(p.name ?? 'অজানা প্রোডাক্ট'),
+            quantity:  Number(p.quantity) || 0,
+            buyPrice:  Number(p.buyPrice) || 0,
+            sellPrice: Number(p.sellPrice) || 0,
+          }));
+
+        renderTable(allProducts);
+      } catch (err) {
+        console.error('ডাটা লোড এরর:', err);
+        let msg = 'data.json ফাইল লোড করা যাচ্ছে না।';
+        if (err.message.includes('Failed to fetch')) {
+          msg = 'নেটওয়ার্ক সমস্যা অথবা ফাইলটি একই ফোল্ডারে নেই। GitHub Pages-এ আপলোড করার সময় data.json ফাইলটি index.html এর পাশে রাখুন।';
+        } else if (err.message.includes('HTTP 404')) {
+          msg = 'data.json ফাইলটি পাওয়া যায়নি (404)। ফাইলটি একই ফোল্ডারে আছে কিনা যাচাই করুন।';
+        } else if (err.message.includes('Unexpected token')) {
+          msg = 'data.json ফাইলের JSON সিনট্যাক্সে ভুল আছে। কমা, কোটেশন ইত্যাদি ঠিক আছে কিনা দেখুন।';
+        } else {
+          msg = err.message;
         }
+        errorMessage.textContent = msg;
+        showState('error');
+      } finally {
+        refreshIcon.classList.remove('animate-spin');
+      }
+    }
 
-        function closeModal() {
-            document.getElementById('discountModal').classList.add('hidden');
-            currentActiveProduct = null;
+    /* ============================================================
+       টেবিল রেন্ডার
+       ============================================================ */
+    function renderTable(products) {
+      // সার্চ ফিল্টার প্রয়োগ
+      const query = searchInput.value.trim().toLowerCase();
+      const filtered = query
+        ? products.filter(p => p.name.toLowerCase().includes(query))
+        : products;
+
+      // স্ট্যাটস আপডেট
+      totalCount.textContent = toBn(products.length);
+      totalStock.textContent  = toBn(products.reduce((s, p) => s + p.quantity, 0));
+
+      if (filtered.length === 0) {
+        showState('empty');
+        return;
+      }
+
+      showState('table');
+
+      tableBody.innerHTML = filtered.map((p, idx) => `
+        <tr class="hover:bg-emerald-50/40">
+          <td class="px-4 sm:px-6 py-4 text-sm text-slate-500 whitespace-nowrap">
+            ${toBn(idx + 1)}
+          </td>
+          <td class="px-4 sm:px-6 py-4">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+              </div>
+              <span class="font-medium text-slate-800">${escapeHtml(p.name)}</span>
+            </div>
+          </td>
+          <td class="px-4 sm:px-6 py-4 text-center whitespace-nowrap">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${p.quantity > 0 ? 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-100' : 'bg-red-50 text-red-700 ring-1 ring-red-100'}">
+              ${toBn(p.quantity)} ${p.quantity > 0 ? 'পিস' : 'স্টক নেই'}
+            </span>
+          </td>
+          <td class="px-4 sm:px-6 py-4 text-right whitespace-nowrap">
+            <span class="font-semibold text-slate-800">${formatTk(p.sellPrice)}</span>
+          </td>
+          <td class="px-4 sm:px-6 py-4 text-center whitespace-nowrap">
+            <div class="flex items-center justify-center gap-2">
+              <!-- ডিসকাউন্ট হিসাব বাটন -->
+              <button
+                onclick="openDiscountModal(${p.id})"
+                class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium transition shadow-sm"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                </svg>
+                ডিসকাউন্ট হিসাব
+              </button>
+              <!-- কেনাদাম দেখুন বাটন -->
+              <button
+                onclick="openBuyPriceModal(${p.id})"
+                class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-700 text-xs font-medium transition ring-1 ring-amber-200"
+                title="কেনাদাম দেখুন"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+                কেনাদাম
+              </button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    /* ============================================================
+       HTML এসকেপ হেল্পার — XSS প্রতিরোধ
+       ============================================================ */
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = String(text);
+      return div.innerHTML;
+    }
+
+    /* ============================================================
+       ডিসকাউন্ট মডাল খোলা/বন্ধা
+       ============================================================ */
+    function openDiscountModal(productId) {
+      const product = allProducts.find(p => p.id === productId);
+      if (!product) return;
+
+      currentModalProduct = product;
+
+      // মডালে প্রোডাক্ট তথ্য ভরাট করা
+      document.getElementById('modalProductName').textContent  = product.name;
+      document.getElementById('modalProductStock').textContent  = toBn(product.quantity);
+      document.getElementById('modalProductPrice').textContent = formatTk(product.sellPrice);
+
+      // ডিসকাউন্ট রিসেট
+      document.getElementById('discountInput').value = 0;
+      setDiscountType('percent');
+
+      // মডাল দেখানো
+      const modal = document.getElementById('discountModal');
+      modal.classList.remove('hidden');
+      document.body.classList.add('modal-open');
+
+      // ফোকাস ইনপুটে দেওয়া
+      setTimeout(() => document.getElementById('discountInput').focus(), 100);
+    }
+
+    function closeDiscountModal() {
+      document.getElementById('discountModal').classList.add('hidden');
+      document.body.classList.remove('modal-open');
+      currentModalProduct = null;
+    }
+
+    /* ============================================================
+       ডিসকাউন্ট টাইপ পরিবর্তন — % অথবা ৳
+       ============================================================ */
+    function setDiscountType(type) {
+      currentDiscountType = type;
+      const percentBtn = document.getElementById('percentTypeBtn');
+      const cashBtn    = document.getElementById('cashTypeBtn');
+      const unitLabel  = document.getElementById('discountUnitLabel');
+      const suffix     = document.getElementById('discountSuffix');
+      const hint       = document.getElementById('discountHint');
+
+      if (type === 'percent') {
+        percentBtn.className = 'px-4 py-2.5 rounded-lg border-2 border-emerald-500 bg-emerald-50 text-emerald-700 font-medium text-sm transition flex items-center justify-center gap-1.5';
+        cashBtn.className    = 'px-4 py-2.5 rounded-lg border-2 border-slate-200 bg-white text-slate-600 font-medium text-sm transition flex items-center justify-center gap-1.5';
+        unitLabel.textContent = '(%)';
+        suffix.textContent = '%';
+        hint.textContent = 'সর্বোচ্চ ১০০% পর্যন্ত দেওয়া যাবে।';
+      } else {
+        cashBtn.className    = 'px-4 py-2.5 rounded-lg border-2 border-emerald-500 bg-emerald-50 text-emerald-700 font-medium text-sm transition flex items-center justify-center gap-1.5';
+        percentBtn.className = 'px-4 py-2.5 rounded-lg border-2 border-slate-200 bg-white text-slate-600 font-medium text-sm transition flex items-center justify-center gap-1.5';
+        unitLabel.textContent = '(৳)';
+        suffix.textContent = '৳';
+        hint.textContent = 'বিক্রয়মূল্যের বেশি ডিসকাউন্ট দেওয়া যাবে না।';
+      }
+
+      // টাইপ পরিবর্তনের পর আবার হিসাব করা
+      calculateDiscount();
+    }
+
+    /* ============================================================
+       রিয়েল-টাইম ডিসকাউন্ট হিসাব
+       ============================================================ */
+    function calculateDiscount() {
+      if (!currentModalProduct) return;
+
+      const originalPrice = currentModalProduct.sellPrice;
+      const input = document.getElementById('discountInput');
+      let discountValue = parseFloat(input.value) || 0;
+
+      // নেগেটিভ ভ্যালু রোধ
+      if (discountValue < 0) {
+        discountValue = 0;
+        input.value = 0;
+      }
+
+      let discountAmount = 0;
+
+      if (currentDiscountType === 'percent') {
+        // পার্সেন্টেজ ভ্যালিডেশন — সর্বোচ্চ ১০০%
+        if (discountValue > 100) {
+          discountValue = 100;
+          input.value = 100;
         }
-
-        function setDiscountType(type) {
-            discountMode = type;
-            const btnPercent = document.getElementById('typePercent');
-            const btnFixed = document.getElementById('typeFixed');
-            const label = document.getElementById('discountLabel');
-
-            if (type === 'percent') {
-                btnPercent.className = 'py-2 text-xs font-semibold rounded-lg border transition-all bg-indigo-50 border-indigo-500 text-indigo-600';
-                btnFixed.className = 'py-2 text-xs font-semibold rounded-lg border transition-all bg-white border-slate-200 text-slate-600';
-                label.textContent = 'ডিসকাউন্ট পরিমাণ (%)';
-            } else {
-                btnFixed.className = 'py-2 text-xs font-semibold rounded-lg border transition-all bg-indigo-50 border-indigo-500 text-indigo-600';
-                btnPercent.className = 'py-2 text-xs font-semibold rounded-lg border transition-all bg-white border-slate-200 text-slate-600';
-                label.textContent = 'ডিসকাউন্ট পরিমাণ (টাকা ৳)';
-            }
-            calculateDiscount();
+        discountAmount = (originalPrice * discountValue) / 100;
+      } else {
+        // নগদ টাকা ভ্যালিডেশন — বিক্রয়মূল্যের বেশি হতে পারবে না
+        if (discountValue > originalPrice) {
+          discountValue = originalPrice;
+          input.value = originalPrice;
         }
+        discountAmount = discountValue;
+      }
 
-        function calculateDiscount() {
-            if (!currentActiveProduct) return;
-            const originalPrice = parseFloat(currentActiveProduct.sellPrice) || 0;
-            const inputVal = parseFloat(document.getElementById('modalDiscountValue').value) || 0;
-            let finalPrice = originalPrice;
+      // ফাইনাল মূল্য ও অন্যান্য ভ্যালু হিসাব
+      const finalPrice = Math.max(0, originalPrice - discountAmount);
+      const savingsPercent = originalPrice > 0 ? (discountAmount / originalPrice) * 100 : 0;
 
-            if (discountMode === 'percent') {
-                const discountAmount = (originalPrice * inputVal) / 100;
-                finalPrice = originalPrice - discountAmount;
-            } else {
-                finalPrice = originalPrice - inputVal;
-            }
+      // UI আপডেট
+      document.getElementById('resultOriginalPrice').textContent   = formatTk(originalPrice);
+      document.getElementById('resultDiscountAmount').textContent   = '−' + formatTk(discountAmount);
+      document.getElementById('resultFinalPrice').textContent      = formatTk(finalPrice);
+      document.getElementById('resultSavings').textContent         = toBn(savingsPercent.toFixed(1)) + '% সাশ্রয়';
+    }
 
-            if (finalPrice < 0) finalPrice = 0;
-            document.getElementById('modalFinalPrice').textContent = '৳' + finalPrice.toFixed(2);
+    /* ============================================================
+       কেনাদাম মডাল
+       ============================================================ */
+    function openBuyPriceModal(productId) {
+      const product = allProducts.find(p => p.id === productId);
+      if (!product) return;
+
+      document.getElementById('buyPriceProductName').textContent = product.name;
+      document.getElementById('buyPriceValue').textContent      = formatTk(product.buyPrice);
+
+      const modal = document.getElementById('buyPriceModal');
+      modal.classList.remove('hidden');
+      document.body.classList.add('modal-open');
+    }
+
+    function closeBuyPriceModal() {
+      document.getElementById('buyPriceModal').classList.add('hidden');
+      document.body.classList.remove('modal-open');
+    }
+
+    /* ============================================================
+       ইভেন্ট লিসেনার
+       ============================================================ */
+    // সার্চ ইনপুট ডিবাউন্সিং
+    let searchTimer;
+    searchInput.addEventListener('input', () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => renderTable(allProducts), 200);
+    });
+
+    // রিফ্রেশ বাটন
+    refreshBtn.addEventListener('click', loadData);
+
+    // ESC কী দিয়ে মডাল বন্ধ
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (!document.getElementById('discountModal').classList.contains('hidden')) {
+          closeDiscountModal();
         }
+        if (!document.getElementById('buyPriceModal').classList.contains('hidden')) {
+          closeBuyPriceModal();
+        }
+      }
+    });
 
-        loadProducts();
-    </script>
+    // ব্যাকড্রপে ক্লিক করলে মডাল বন্ধ
+    document.getElementById('discountBackdrop').addEventListener('click', closeDiscountModal);
+    document.getElementById('buyPriceBackdrop').addEventListener('click', closeBuyPriceModal);
+
+    /* ============================================================
+       পেজ লোড হলে ডাটা ফেচ করা
+       ============================================================ */
+    document.addEventListener('DOMContentLoaded', loadData);
+  </script>
 </body>
 </html>
