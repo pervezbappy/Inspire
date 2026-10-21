@@ -3,120 +3,2652 @@
     "name": "E5-36 01060528 LINE FILTER",
     "quantity": 0,
     "buyPrice": 5000,
-    "sellPrice": 0
+    "sellPrice": 6000
   },
   {
     "name": "E7-36 01060528 LINE FILTER",
     "quantity": 0,
     "buyPrice": 5000,
-    "sellPrice": 0
+    "sellPrice": 6000
   },
   {
     "name": "E9-36 01060528 LINE FILTER",
     "quantity": 0,
     "buyPrice": 5000,
-    "sellPrice": 0
+    "sellPrice": 6000
   },
   {
     "name": "117-4089 FUEL FILTER",
     "quantity": 0,
     "buyPrice": 1100,
-    "sellPrice": 0
+    "sellPrice": 1320
   },
   {
     "name": "FF5018..FUEL FILTER",
     "quantity": 0,
     "buyPrice": 200,
-    "sellPrice": 0
+    "sellPrice": 240
   },
   {
     "name": "LF4054..OIL FILTER.",
     "quantity": 0,
     "buyPrice": 450,
-    "sellPrice": 0
+    "sellPrice": 540
   },
   {
     "name": "C7601 OIL FILTER",
     "quantity": 0,
     "buyPrice": 1200,
-    "sellPrice": 0
+    "sellPrice": 1440
   },
   {
     "name": "W950 OIL FILTER",
     "quantity": 0,
     "buyPrice": 1000,
-    "sellPrice": 0
+    "sellPrice": 1200
   },
   {
     "name": "AIR FILTER",
     "quantity": 0,
     "buyPrice": 60,
-    "sellPrice": 0
+    "sellPrice": 72
   },
   {
     "name": "1R-0739 OIL FILTER",
     "quantity": 0,
     "buyPrice": 800,
-    "sellPrice": 0
+    "sellPrice": 960
   },
   {
     "name": "LF667..OIL FILTER",
     "quantity": 0,
     "buyPrice": 550,
-    "sellPrice": 0
+    "sellPrice": 660
   },
   {
     "name": "FF5018..FUEL FILTER",
     "quantity": 0,
     "buyPrice": 200,
-    "sellPrice": 0
+    "sellPrice": 240
   },
   {
     "name": "LF3345...OIL FILTER",
     "quantity": 0,
     "buyPrice": 350,
-    "sellPrice": 0
+    "sellPrice": 420
   },
   {
     "name": "W962 OIL FILTER",
     "quantity": 0,
     "buyPrice": 900,
-    "sellPrice": 0
+    "sellPrice": 1080
   },
   {
     "name": "FF5052 FUEL FILTER",
     "quantity": 0,
     "buyPrice": 250,
-    "sellPrice": 0
+    "sellPrice": 300
   },
   {
     "name": "4930153131 AIR OIL SEPARETOR",
     "quantity": 0,
     "buyPrice": 4500,
-    "sellPrice": 0
+    "sellPrice": 5400
   },
   {
     "name": "4930152101 AIR OIL SEPARETOR",
     "quantity": 0,
     "buyPrice": 5000,
-    "sellPrice": 0
+    "sellPrice": 6000
   },
   {
     "name": "FF5507..FUEL FILTER",
     "quantity": 0,
     "buyPrice": 700,
-    "sellPrice": 0
+    "sellPrice": 840
   },
   {
     "name": "LF3654..OIL FILTER",
     "quantity": 0,
     "buyPrice": 700,
-    "sellPrice": 0
+    "sellPrice": 840
   },
   {
     "name": "26561117..FUEL FILTER",
     "quantity": 0,
     "buyPrice": 200,
+    "sellPrice": 240
+  },
+  {
+    "name": "2654407..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "HC5801 HYDRUALIC FILTER",
+    "quantity": 0,
+    "buyPrice": 555,
+    "sellPrice": 666
+  },
+  {
+    "name": "093-7521 HYDRULIC FILTER",
+    "quantity": 0,
+    "buyPrice": 700,
+    "sellPrice": 840
+  },
+  {
+    "name": "SI-8670X HYDRUALIC FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "1R-0753 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 850,
+    "sellPrice": 1020
+  },
+  {
+    "name": "1R-0739 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 800,
+    "sellPrice": 960
+  },
+  {
+    "name": "C5510 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 800,
+    "sellPrice": 960
+  },
+  {
+    "name": "1R-0751 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 450,
+    "sellPrice": 540
+  },
+  {
+    "name": "A8508 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 1800,
+    "sellPrice": 2160
+  },
+  {
+    "name": "H7911 HYDRAULIC FILTER",
+    "quantity": 0,
+    "buyPrice": 1600,
+    "sellPrice": 1920
+  },
+  {
+    "name": "FC1003 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 370,
+    "sellPrice": 444
+  },
+  {
+    "name": "C1007 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1150,
+    "sellPrice": 1380
+  },
+  {
+    "name": "F1006 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 245,
+    "sellPrice": 294
+  },
+  {
+    "name": "C6202 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 550,
+    "sellPrice": 660
+  },
+  {
+    "name": "4I-3948 HYDRUALIC FILTER",
+    "quantity": 0,
+    "buyPrice": 900,
+    "sellPrice": 1080
+  },
+  {
+    "name": "HC5505 HYDRAULIC FILTER",
+    "quantity": 0,
+    "buyPrice": 1300,
+    "sellPrice": 1560
+  },
+  {
+    "name": "W962 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 850,
+    "sellPrice": 1020
+  },
+  {
+    "name": "1808 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "O1805-1 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "FC5501 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "AS5628 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 800,
+    "sellPrice": 960
+  },
+  {
+    "name": "H5622 HYDRAULIC FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "H5211 HYDRAULIC FILTER",
+    "quantity": 0,
+    "buyPrice": 300,
+    "sellPrice": 360
+  },
+  {
+    "name": "H2718 HYDRAULIC FILTER",
+    "quantity": 0,
+    "buyPrice": 300,
+    "sellPrice": 360
+  },
+  {
+    "name": "FC5601 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 450,
+    "sellPrice": 540
+  },
+  {
+    "name": "FC5604 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 400,
+    "sellPrice": 480
+  },
+  {
+    "name": "FC1007 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 380,
+    "sellPrice": 456
+  },
+  {
+    "name": "C1822 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 480,
+    "sellPrice": 576
+  },
+  {
+    "name": "O1006 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 450,
+    "sellPrice": 540
+  },
+  {
+    "name": "1R-0739 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 800,
+    "sellPrice": 960
+  },
+  {
+    "name": "FC1003 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 420,
+    "sellPrice": 504
+  },
+  {
+    "name": "C1007 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 400,
+    "sellPrice": 480
+  },
+  {
+    "name": "C1008 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 750,
+    "sellPrice": 900
+  },
+  {
+    "name": "C2708 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1400,
+    "sellPrice": 1680
+  },
+  {
+    "name": "LF3345...OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 350,
+    "sellPrice": 420
+  },
+  {
+    "name": "LF667..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 550,
+    "sellPrice": 660
+  },
+  {
+    "name": "C1506 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 750,
+    "sellPrice": 900
+  },
+  {
+    "name": "FC1503 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 450,
+    "sellPrice": 540
+  },
+  {
+    "name": "C1305 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 750,
+    "sellPrice": 900
+  },
+  {
+    "name": "C1306 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "FC2701 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "H7919 HYDRUALIC FILTER",
+    "quantity": 0,
+    "buyPrice": 1350,
+    "sellPrice": 1620
+  },
+  {
+    "name": "O1012 S OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "093-7521 HYDRULIC FILTER",
+    "quantity": 0,
+    "buyPrice": 700,
+    "sellPrice": 840
+  },
+  {
+    "name": "HC1014 HYDRAULIC FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "4I-3948 HYDRUALIC FILTER",
+    "quantity": 0,
+    "buyPrice": 900,
+    "sellPrice": 1080
+  },
+  {
+    "name": "H7911 HYDRAULIC FILTER",
+    "quantity": 0,
+    "buyPrice": 1600,
+    "sellPrice": 1920
+  },
+  {
+    "name": "O1808 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "O1805-1 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 550,
+    "sellPrice": 660
+  },
+  {
+    "name": "HC5807 HYDRAULIC FILTER",
+    "quantity": 0,
+    "buyPrice": 700,
+    "sellPrice": 840
+  },
+  {
+    "name": "FC1005 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "C1304 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "FC5501 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "5I-7951 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 400,
+    "sellPrice": 480
+  },
+  {
+    "name": "51-7950 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 800,
+    "sellPrice": 960
+  },
+  {
+    "name": "FC1003 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 450,
+    "sellPrice": 540
+  },
+  {
+    "name": "FC1004 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 450,
+    "sellPrice": 540
+  },
+  {
+    "name": "1R-0751 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "1R-0739 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 820,
+    "sellPrice": 984
+  },
+  {
+    "name": "5I-8670X HYDRUALIC FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "C1008 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 750,
+    "sellPrice": 900
+  },
+  {
+    "name": "C1004 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 550,
+    "sellPrice": 660
+  },
+  {
+    "name": "C1304 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "FS1212 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 350,
+    "sellPrice": 420
+  },
+  {
+    "name": "JX0810B OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 300,
+    "sellPrice": 360
+  },
+  {
+    "name": "CX0708 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 250,
+    "sellPrice": 300
+  },
+  {
+    "name": "SFC7103-30 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "LF3321..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 700,
+    "sellPrice": 840
+  },
+  {
+    "name": "LF3654..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 700,
+    "sellPrice": 840
+  },
+  {
+    "name": "WF2096..WATER FILTER",
+    "quantity": 0,
+    "buyPrice": 600,
+    "sellPrice": 720
+  },
+  {
+    "name": "LF667..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 650,
+    "sellPrice": 780
+  },
+  {
+    "name": "1R-0739 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 850,
+    "sellPrice": 1020
+  },
+  {
+    "name": "O1012 S OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "FC1007 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 450,
+    "sellPrice": 540
+  },
+  {
+    "name": "320/07394 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "320/04133 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "320/07394 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "C1005 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 550,
+    "sellPrice": 660
+  },
+  {
+    "name": "LF3586 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "5I-7951 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 400,
+    "sellPrice": 480
+  },
+  {
+    "name": "A5507 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 2200,
+    "sellPrice": 2640
+  },
+  {
+    "name": "1501-13-5-10 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 2500,
+    "sellPrice": 3000
+  },
+  {
+    "name": "1502-B1-01 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 3000,
+    "sellPrice": 3600
+  },
+  {
+    "name": "1501-13-5-10 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 2500,
+    "sellPrice": 3000
+  },
+  {
+    "name": "1502-B1-01 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 3000,
+    "sellPrice": 3600
+  },
+  {
+    "name": "103-F5-10 AIR OIL SEPARATOR",
+    "quantity": 0,
+    "buyPrice": 17000,
+    "sellPrice": 20400
+  },
+  {
+    "name": "LF670..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 650,
+    "sellPrice": 780
+  },
+  {
+    "name": "LF3349..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 350,
+    "sellPrice": 420
+  },
+  {
+    "name": "CX0710B4 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 350,
+    "sellPrice": 420
+  },
+  {
+    "name": "C1304 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "FF185 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 350,
+    "sellPrice": 420
+  },
+  {
+    "name": "A2210 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 1900,
+    "sellPrice": 2280
+  },
+  {
+    "name": "6*12 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "610000070005H OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 400,
+    "sellPrice": 480
+  },
+  {
+    "name": "1501-13-5-01 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 2500,
+    "sellPrice": 3000
+  },
+  {
+    "name": "1502-B1-01 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 3000,
+    "sellPrice": 3600
+  },
+  {
+    "name": "LF667..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 600,
+    "sellPrice": 720
+  },
+  {
+    "name": "5I-7950 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 800,
+    "sellPrice": 960
+  },
+  {
+    "name": "JX0811A OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 350,
+    "sellPrice": 420
+  },
+  {
+    "name": "26560201..FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "2654407..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "26510342..AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 900,
+    "sellPrice": 1080
+  },
+  {
+    "name": "LF3328..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "C1506 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 900,
+    "sellPrice": 1080
+  },
+  {
+    "name": "32/925994 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "320/04133 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "320/07394 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "LF678..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 350,
+    "sellPrice": 420
+  },
+  {
+    "name": "LF3586 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "RE62418 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 800,
+    "sellPrice": 960
+  },
+  {
+    "name": "32/917804 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 1800,
+    "sellPrice": 2160
+  },
+  {
+    "name": "FS19735 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 850,
+    "sellPrice": 1020
+  },
+  {
+    "name": "FS1242 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 700,
+    "sellPrice": 840
+  },
+  {
+    "name": "FF5052 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 250,
+    "sellPrice": 300
+  },
+  {
+    "name": "LF3349..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 350,
+    "sellPrice": 420
+  },
+  {
+    "name": "ME006066 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 250,
+    "sellPrice": 300
+  },
+  {
+    "name": "BM429 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 250,
+    "sellPrice": 300
+  },
+  {
+    "name": "4627133..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 700,
+    "sellPrice": 840
+  },
+  {
+    "name": "26560143..FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 400,
+    "sellPrice": 480
+  },
+  {
+    "name": "26560145..FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 400,
+    "sellPrice": 480
+  },
+  {
+    "name": "26510380..AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 800,
+    "sellPrice": 960
+  },
+  {
+    "name": "C7603 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 600,
+    "sellPrice": 720
+  },
+  {
+    "name": "P550351..FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "26510353..AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "6*12 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 400,
+    "sellPrice": 480
+  },
+  {
+    "name": "AIR FILTER 4C",
+    "quantity": 0,
+    "buyPrice": 250,
+    "sellPrice": 300
+  },
+  {
+    "name": "8.5*15 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 1400,
+    "sellPrice": 1680
+  },
+  {
+    "name": "JX0810B OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 400,
+    "sellPrice": 480
+  },
+  {
+    "name": "FC5704 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 550,
+    "sellPrice": 660
+  },
+  {
+    "name": "26561117..FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 250,
+    "sellPrice": 300
+  },
+  {
+    "name": "2654408..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 400,
+    "sellPrice": 480
+  },
+  {
+    "name": "2654407..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "LF670..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 750,
+    "sellPrice": 900
+  },
+  {
+    "name": "CX0708 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 300,
+    "sellPrice": 360
+  },
+  {
+    "name": "117-4089 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 1100,
+    "sellPrice": 1320
+  },
+  {
+    "name": "26510342..AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 900,
+    "sellPrice": 1080
+  },
+  {
+    "name": "LF678..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 450,
+    "sellPrice": 540
+  },
+  {
+    "name": "FC1003 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 600,
+    "sellPrice": 720
+  },
+  {
+    "name": "019596..FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "CV2473..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1100,
+    "sellPrice": 1320
+  },
+  {
+    "name": "FF105D FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 450,
+    "sellPrice": 540
+  },
+  {
+    "name": "LF670..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 650,
+    "sellPrice": 780
+  },
+  {
+    "name": "WF2076..WATER FILTER",
+    "quantity": 0,
+    "buyPrice": 800,
+    "sellPrice": 960
+  },
+  {
+    "name": "LF777..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 2500,
+    "sellPrice": 3000
+  },
+  {
+    "name": "32/917804 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 400,
+    "sellPrice": 480
+  },
+  {
+    "name": "AIR FILTER 6C",
+    "quantity": 0,
+    "buyPrice": 300,
+    "sellPrice": 360
+  },
+  {
+    "name": "CX0708 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 450,
+    "sellPrice": 540
+  },
+  {
+    "name": "JX0811A OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "320/04133 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "32/925994 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "JX0708C",
+    "quantity": 0,
+    "buyPrice": 400,
+    "sellPrice": 480
+  },
+  {
+    "name": "AIR FILTER 4C",
+    "quantity": 0,
+    "buyPrice": 300,
+    "sellPrice": 360
+  },
+  {
+    "name": "C1506 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1100,
+    "sellPrice": 1320
+  },
+  {
+    "name": "FC1003 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 600,
+    "sellPrice": 720
+  },
+  {
+    "name": "320/04133 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "32/925994 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "320/07394 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "C1007 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1350,
+    "sellPrice": 1620
+  },
+  {
+    "name": "C1304 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "C1008 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 750,
+    "sellPrice": 900
+  },
+  {
+    "name": "FC1003 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 430,
+    "sellPrice": 516
+  },
+  {
+    "name": "FC5501 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "O1805-1 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 650,
+    "sellPrice": 780
+  },
+  {
+    "name": "O1808 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "A8508 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 1900,
+    "sellPrice": 2280
+  },
+  {
+    "name": "320/04133 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 900,
+    "sellPrice": 1080
+  },
+  {
+    "name": "320/07394 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 900,
+    "sellPrice": 1080
+  },
+  {
+    "name": "1R-0751 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "1R-0739 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 800,
+    "sellPrice": 960
+  },
+  {
+    "name": "FF5018..FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 200,
+    "sellPrice": 240
+  },
+  {
+    "name": "LF678..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 350,
+    "sellPrice": 420
+  },
+  {
+    "name": "FF185 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 350,
+    "sellPrice": 420
+  },
+  {
+    "name": "A1828 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 3200,
+    "sellPrice": 3840
+  },
+  {
+    "name": "LF3586 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "LF670..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 600,
+    "sellPrice": 720
+  },
+  {
+    "name": "26560137..FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 800,
+    "sellPrice": 960
+  },
+  {
+    "name": "26540244..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1300,
+    "sellPrice": 1560
+  },
+  {
+    "name": "2654403..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 300,
+    "sellPrice": 360
+  },
+  {
+    "name": "26561118..FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "A5627 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 1750,
+    "sellPrice": 2100
+  },
+  {
+    "name": "A5639 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 2500,
+    "sellPrice": 3000
+  },
+  {
+    "name": "JX0810B OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 300,
+    "sellPrice": 360
+  },
+  {
+    "name": "CX0708 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 200,
+    "sellPrice": 240
+  },
+  {
+    "name": "CX0710B4 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 300,
+    "sellPrice": 360
+  },
+  {
+    "name": "JX0811A OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 300,
+    "sellPrice": 360
+  },
+  {
+    "name": "6*12 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 400,
+    "sellPrice": 480
+  },
+  {
+    "name": "AIR FILTER 4C",
+    "quantity": 0,
+    "buyPrice": 250,
+    "sellPrice": 300
+  },
+  {
+    "name": "8.5*15 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 1400,
+    "sellPrice": 1680
+  },
+  {
+    "name": "W962 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 900,
+    "sellPrice": 1080
+  },
+  {
+    "name": "FF5052 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 250,
+    "sellPrice": 300
+  },
+  {
+    "name": "4930153131 AIR OIL SEPARETOR",
+    "quantity": 0,
+    "buyPrice": 4500,
+    "sellPrice": 5400
+  },
+  {
+    "name": "4930152101 AIR OIL SEPARETOR",
+    "quantity": 0,
+    "buyPrice": 5000,
+    "sellPrice": 6000
+  },
+  {
+    "name": "610000070005H OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 400,
+    "sellPrice": 480
+  },
+  {
+    "name": "LF670..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 650,
+    "sellPrice": 780
+  },
+  {
+    "name": "LF3349..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 350,
+    "sellPrice": 420
+  },
+  {
+    "name": "CX0710B4 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 350,
+    "sellPrice": 420
+  },
+  {
+    "name": "C1304 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "FF185 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 350,
+    "sellPrice": 420
+  },
+  {
+    "name": "A2210 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 1900,
+    "sellPrice": 2280
+  },
+  {
+    "name": "6*12 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "610000070005H OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 400,
+    "sellPrice": 480
+  },
+  {
+    "name": "1501-13-5-01 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 2500,
+    "sellPrice": 3000
+  },
+  {
+    "name": "1502-B1-01 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 3000,
+    "sellPrice": 3600
+  },
+  {
+    "name": "LF3883..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "FF5078 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 800,
+    "sellPrice": 960
+  },
+  {
+    "name": "LB1374/2..OIL SEPARETOR",
+    "quantity": 0,
+    "buyPrice": 4500,
+    "sellPrice": 5400
+  },
+  {
+    "name": "30154111 AIR OIL SEPARATOR",
+    "quantity": 0,
+    "buyPrice": 6000,
+    "sellPrice": 7200
+  },
+  {
+    "name": "5*11 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 600,
+    "sellPrice": 720
+  },
+  {
+    "name": "Local Air Filter",
+    "quantity": 0,
+    "buyPrice": 300,
+    "sellPrice": 360
+  },
+  {
+    "name": "C 1140 Air Filter",
+    "quantity": 0,
+    "buyPrice": 600,
+    "sellPrice": 720
+  },
+  {
+    "name": "O1805-1 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 550,
+    "sellPrice": 660
+  },
+  {
+    "name": "O1808 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "C1007 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1250,
+    "sellPrice": 1500
+  },
+  {
+    "name": "FC1003 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "C1304 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "O1006 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 550,
+    "sellPrice": 660
+  },
+  {
+    "name": "H7919 HYDRUALIC FILTER",
+    "quantity": 0,
+    "buyPrice": 1550,
+    "sellPrice": 1860
+  },
+  {
+    "name": "32/925994 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "320/04133 OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "320/07394 FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "A6703 AIR FILTER",
+    "quantity": 0,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "26561118..FUEL FILTER",
+    "quantity": 0,
+    "buyPrice": 450,
+    "sellPrice": 540
+  },
+  {
+    "name": "4627133..OIL FILTER",
+    "quantity": 0,
+    "buyPrice": 900,
+    "sellPrice": 1080
+  },
+  {
+    "name": "Perkins ar 380",
+    "quantity": 2,
+    "buyPrice": 800,
+    "sellPrice": 960
+  },
+  {
+    "name": "Perkins ar 353",
+    "quantity": 3,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "Perkins ar 337",
+    "quantity": 2,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "Sakura A5627",
+    "quantity": 1,
+    "buyPrice": 1750,
+    "sellPrice": 2100
+  },
+  {
+    "name": "Sakura a 8508",
+    "quantity": 3,
+    "buyPrice": 1900,
+    "sellPrice": 2280
+  },
+  {
+    "name": "Jcb 32/917804",
+    "quantity": 1,
+    "buyPrice": 1800,
+    "sellPrice": 2160
+  },
+  {
+    "name": "Sakura a 2210",
+    "quantity": 1,
+    "buyPrice": 1900,
+    "sellPrice": 2280
+  },
+  {
+    "name": "Sakura a 5507",
+    "quantity": 1,
+    "buyPrice": 2200,
+    "sellPrice": 2640
+  },
+  {
+    "name": "Perkins ar 342",
+    "quantity": 3,
+    "buyPrice": 900,
+    "sellPrice": 1080
+  },
+  {
+    "name": "Sakura a 1828",
+    "quantity": 1,
+    "buyPrice": 3200,
+    "sellPrice": 3840
+  },
+  {
+    "name": "Sakura h 7911",
+    "quantity": 1,
+    "buyPrice": 1600,
+    "sellPrice": 1920
+  },
+  {
+    "name": "Sakura as 5628",
+    "quantity": 2,
+    "buyPrice": 800,
+    "sellPrice": 960
+  },
+  {
+    "name": "Mann 4930153131",
+    "quantity": 2,
+    "buyPrice": 4500,
+    "sellPrice": 5400
+  },
+  {
+    "name": "Ail 226,227",
+    "quantity": 5,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "Cx 0708 / cx 7085",
+    "quantity": 5,
+    "buyPrice": 300,
+    "sellPrice": 360
+  },
+  {
+    "name": "Mann w 962",
+    "quantity": 9,
+    "buyPrice": 600,
+    "sellPrice": 720
+  },
+  {
+    "name": "Mann 4930152101",
+    "quantity": 3,
+    "buyPrice": 5000,
+    "sellPrice": 6000
+  },
+  {
+    "name": "Mann 4930152121",
+    "quantity": 2,
+    "buyPrice": 5000,
+    "sellPrice": 6000
+  },
+  {
+    "name": "Mann Lb 1374/2",
+    "quantity": 2,
+    "buyPrice": 4500,
+    "sellPrice": 5400
+  },
+  {
+    "name": "Sakura c 7601",
+    "quantity": 2,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "Sakura c 2708 /c 1315",
+    "quantity": 2,
+    "buyPrice": 1400,
+    "sellPrice": 1680
+  },
+  {
+    "name": "Mann w 950",
+    "quantity": 1,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "Jcb 320/07394",
+    "quantity": 2,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "Jcb 320/04133A",
+    "quantity": 2,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "Donaldson p 550351",
+    "quantity": 4,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "Sakura H 5622",
+    "quantity": 1,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "Sakura c 1306",
+    "quantity": 2,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "Sakura h 7919",
+    "quantity": 2,
+    "buyPrice": 1550,
+    "sellPrice": 1860
+  },
+  {
+    "name": "Cat 093-7521",
+    "quantity": 5,
+    "buyPrice": 700,
+    "sellPrice": 840
+  },
+  {
+    "name": "Cat 1R-0739",
+    "quantity": 3,
+    "buyPrice": 850,
+    "sellPrice": 1020
+  },
+  {
+    "name": "Cat 1R-0753",
+    "quantity": 4,
+    "buyPrice": 850,
+    "sellPrice": 1020
+  },
+  {
+    "name": "Cat 5I-7950",
+    "quantity": 1,
+    "buyPrice": 800,
+    "sellPrice": 960
+  },
+  {
+    "name": "Cat 5I-8670x",
+    "quantity": 2,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "Cat 117-4089 /ts 3006",
+    "quantity": 2,
+    "buyPrice": 1100,
+    "sellPrice": 1320
+  },
+  {
+    "name": "Cat 4I-3948",
+    "quantity": 2,
+    "buyPrice": 900,
+    "sellPrice": 1080
+  },
+  {
+    "name": "Cat 1R-0751",
+    "quantity": 1,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "Cat 5I-7951",
+    "quantity": 5,
+    "buyPrice": 400,
+    "sellPrice": 480
+  },
+  {
+    "name": "Lf 3328",
+    "quantity": 4,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "Sakura c 1822",
+    "quantity": 3,
+    "buyPrice": 480,
+    "sellPrice": 576
+  },
+  {
+    "name": "Sakura Hc 5505",
+    "quantity": 1,
+    "buyPrice": 1300,
+    "sellPrice": 1560
+  },
+  {
+    "name": "Sakura Sfc 7103-30",
+    "quantity": 2,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "Sakura hc 1014",
+    "quantity": 3,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "Sakura hc 5807",
+    "quantity": 1,
+    "buyPrice": 700,
+    "sellPrice": 840
+  },
+  {
+    "name": "Sakura fc 5601",
+    "quantity": 1,
+    "buyPrice": 450,
+    "sellPrice": 540
+  },
+  {
+    "name": "Sakura h 5211",
+    "quantity": 2,
+    "buyPrice": 300,
+    "sellPrice": 360
+  },
+  {
+    "name": "sakura h 2718",
+    "quantity": 1,
+    "buyPrice": 300,
+    "sellPrice": 360
+  },
+  {
+    "name": "sakura fc 5604",
+    "quantity": 1,
+    "buyPrice": 400,
+    "sellPrice": 480
+  },
+  {
+    "name": "Sakura c 1305",
+    "quantity": 2,
+    "buyPrice": 750,
+    "sellPrice": 900
+  },
+  {
+    "name": "sakura fc 1503",
+    "quantity": 2,
+    "buyPrice": 450,
+    "sellPrice": 540
+  },
+  {
+    "name": "Sakura c 1008",
+    "quantity": 3,
+    "buyPrice": 750,
+    "sellPrice": 900
+  },
+  {
+    "name": "Sakura c 7603",
+    "quantity": 3,
+    "buyPrice": 600,
+    "sellPrice": 720
+  },
+  {
+    "name": "Sakura c 6202",
+    "quantity": 5,
+    "buyPrice": 550,
+    "sellPrice": 660
+  },
+  {
+    "name": "Sakura f 1006",
+    "quantity": 10,
+    "buyPrice": 250,
+    "sellPrice": 300
+  },
+  {
+    "name": "sakura fc 1007",
+    "quantity": 7,
+    "buyPrice": 450,
+    "sellPrice": 540
+  },
+  {
+    "name": "Sakura fc 1004",
+    "quantity": 6,
+    "buyPrice": 450,
+    "sellPrice": 540
+  },
+  {
+    "name": "Sakura O 1006",
+    "quantity": 4,
+    "buyPrice": 550,
+    "sellPrice": 660
+  },
+  {
+    "name": "sakura c 1304",
+    "quantity": 7,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "Sakura c 1506",
+    "quantity": 3,
+    "buyPrice": 1100,
+    "sellPrice": 1320
+  },
+  {
+    "name": "Sakura fc 5704",
+    "quantity": 4,
+    "buyPrice": 550,
+    "sellPrice": 660
+  },
+  {
+    "name": "Sakura fc 2701",
+    "quantity": 4,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "Sakura O 1808",
+    "quantity": 5,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "Sakura c 5510",
+    "quantity": 3,
+    "buyPrice": 800,
+    "sellPrice": 960
+  },
+  {
+    "name": "Sakura o 1805-1",
+    "quantity": 4,
+    "buyPrice": 650,
+    "sellPrice": 780
+  },
+  {
+    "name": "Sakura fc 5501",
+    "quantity": 3,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "Sakura c 1004",
+    "quantity": 3,
+    "buyPrice": 550,
+    "sellPrice": 660
+  },
+  {
+    "name": "Perkins cv 2473",
+    "quantity": 3,
+    "buyPrice": 1100,
+    "sellPrice": 1320
+  },
+  {
+    "name": "Perkins 4627133",
+    "quantity": 5,
+    "buyPrice": 900,
+    "sellPrice": 1080
+  },
+  {
+    "name": "Fleetguard 3586",
+    "quantity": 2,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "Fleetguard lf777",
+    "quantity": 4,
+    "buyPrice": 2500,
+    "sellPrice": 3000
+  },
+  {
+    "name": "Fleetguard lf 670",
+    "quantity": 2,
+    "buyPrice": 750,
+    "sellPrice": 900
+  },
+  {
+    "name": "Fleetguard fs 1242",
+    "quantity": 3,
+    "buyPrice": 700,
+    "sellPrice": 840
+  },
+  {
+    "name": "Fleetguard fs 1000",
+    "quantity": 2,
+    "buyPrice": 450,
+    "sellPrice": 540
+  },
+  {
+    "name": "Fleetguard fs 1212",
+    "quantity": 5,
+    "buyPrice": 350,
+    "sellPrice": 420
+  },
+  {
+    "name": "Fleetguard lf 3654",
+    "quantity": 3,
+    "buyPrice": 700,
+    "sellPrice": 840
+  },
+  {
+    "name": "Fleetguard lf 667",
+    "quantity": 4,
+    "buyPrice": 650,
+    "sellPrice": 780
+  },
+  {
+    "name": "Fleetguard ff 105D",
+    "quantity": 2,
+    "buyPrice": 450,
+    "sellPrice": 540
+  },
+  {
+    "name": "Fleetguard ff 5507",
+    "quantity": 3,
+    "buyPrice": 700,
+    "sellPrice": 840
+  },
+  {
+    "name": "Fleetguard fs 19735",
+    "quantity": 5,
+    "buyPrice": 850,
+    "sellPrice": 1020
+  },
+  {
+    "name": "Fleetguard ff 5018",
+    "quantity": 3,
+    "buyPrice": 200,
+    "sellPrice": 240
+  },
+  {
+    "name": "Fleetguard ff 5052",
+    "quantity": 4,
+    "buyPrice": 250,
+    "sellPrice": 300
+  },
+  {
+    "name": "Fleetguard lf 3345",
+    "quantity": 2,
+    "buyPrice": 350,
+    "sellPrice": 420
+  },
+  {
+    "name": "Fleetguard lf 3703",
+    "quantity": 1,
+    "buyPrice": 350,
+    "sellPrice": 420
+  },
+  {
+    "name": "Fleetguard lf 3349",
+    "quantity": 1,
+    "buyPrice": 350,
+    "sellPrice": 420
+  },
+  {
+    "name": "Fleetguard ff 185",
+    "quantity": 10,
+    "buyPrice": 350,
+    "sellPrice": 420
+  },
+  {
+    "name": "Perkins 26560143",
+    "quantity": 4,
+    "buyPrice": 600,
+    "sellPrice": 720
+  },
+  {
+    "name": "Perkins 26560145",
+    "quantity": 3,
+    "buyPrice": 600,
+    "sellPrice": 720
+  },
+  {
+    "name": "Perkins 2654403",
+    "quantity": 1,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "Perkins 26561118",
+    "quantity": 8,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "Perkins 26560201",
+    "quantity": 4,
+    "buyPrice": 500,
+    "sellPrice": 600
+  },
+  {
+    "name": "Perkins OD 19596",
+    "quantity": 2,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "Fleetguard wf 2076",
+    "quantity": 4,
+    "buyPrice": 800,
+    "sellPrice": 960
+  },
+  {
+    "name": "Fleetguard wf 2096",
+    "quantity": 2,
+    "buyPrice": 600,
+    "sellPrice": 720
+  },
+  {
+    "name": "Fleetguard ff 5078",
+    "quantity": 2,
+    "buyPrice": 800,
+    "sellPrice": 960
+  },
+  {
+    "name": "Fleetguard lf 3586",
+    "quantity": 1,
+    "buyPrice": 1000,
+    "sellPrice": 1200
+  },
+  {
+    "name": "Fleetguard fs 1006",
+    "quantity": 2,
+    "buyPrice": 1350,
+    "sellPrice": 1620
+  },
+  {
+    "name": "Fleetguard lf 9009",
+    "quantity": 1,
+    "buyPrice": 1300,
+    "sellPrice": 1560
+  },
+  {
+    "name": "Fleetguard lf 3883",
+    "quantity": 3,
+    "buyPrice": 1200,
+    "sellPrice": 1440
+  },
+  {
+    "name": "Perkins 26560137",
+    "quantity": 2,
+    "buyPrice": 800,
+    "sellPrice": 960
+  },
+  {
+    "name": "Perkins 26540244",
+    "quantity": 1,
+    "buyPrice": 1300,
+    "sellPrice": 1560
+  },
+  {
+    "name": "Mb-jx 620",
+    "quantity": 2,
+    "buyPrice": 400,
+    "sellPrice": 480
+  },
+  {
+    "name": "Jx 0706c",
+    "quantity": 1,
+    "buyPrice": 400,
+    "sellPrice": 480
+  },
+  {
+    "name": "Cx 0710b4",
+    "quantity": 6,
+    "buyPrice": 600,
+    "sellPrice": 720
+  },
+  {
+    "name": "Al 429",
+    "quantity": 1,
+    "buyPrice": 300,
+    "sellPrice": 360
+  },
+  {
+    "name": "Mitsubishi me 006066",
+    "quantity": 2,
+    "buyPrice": 250,
+    "sellPrice": 300
+  },
+  {
+    "name": "Cx 7085",
+    "quantity": 7,
+    "buyPrice": 300,
+    "sellPrice": 360
+  },
+  {
+    "name": "Jx 0811a",
+    "quantity": 5,
+    "buyPrice": 350,
+    "sellPrice": 420
+  },
+  {
+    "name": "Wb 202/jx 0810B",
+    "quantity": 3,
+    "buyPrice": 350,
+    "sellPrice": 420
+  },
+  {
+    "name": "Autocom AIL 429",
+    "quantity": 1,
+    "buyPrice": 300,
+    "sellPrice": 360
+  },
+  {
+    "name": "Perkins 26561117",
+    "quantity": 2,
+    "buyPrice": 250,
+    "sellPrice": 300
+  },
+  {
+    "name": "Perkins 2654408",
+    "quantity": 5,
+    "buyPrice": 400,
+    "sellPrice": 480
+  },
+  {
+    "name": "Mann c 1140",
+    "quantity": 1,
+    "buyPrice": 600,
+    "sellPrice": 720
+  },
+  {
+    "name": "Sakura hc 5801",
+    "quantity": 2,
+    "buyPrice": 550,
+    "sellPrice": 660
+  },
+  {
+    "name": "Weichai 612600081334 H",
+    "quantity": 4,
+    "buyPrice": 300,
+    "sellPrice": 360
+  },
+  {
+    "name": "Weichai vg61000070005 H",
+    "quantity": 12,
+    "buyPrice": 400,
+    "sellPrice": 480
+  },
+  {
+    "name": "Weichai cx0708",
+    "quantity": 1,
+    "buyPrice": 300,
+    "sellPrice": 360
+  },
+  {
+    "name": "Weichai jx0810b",
+    "quantity": 1,
+    "buyPrice": 300,
+    "sellPrice": 360
+  },
+  {
+    "name": "Washing gun",
+    "quantity": 2,
+    "buyPrice": 650,
+    "sellPrice": 900
+  },
+  {
+    "name": "Wrench 10\"",
+    "quantity": 0,
+    "buyPrice": 300,
+    "sellPrice": 450
+  },
+  {
+    "name": "cartoon tape small",
+    "quantity": 0,
+    "buyPrice": 25,
+    "sellPrice": 30
+  },
+  {
+    "name": "cartoon tape Big",
+    "quantity": 0,
+    "buyPrice": 100,
+    "sellPrice": 120
+  },
+  {
+    "name": "Max air chuck",
+    "quantity": 0,
+    "buyPrice": 220,
+    "sellPrice": 320
+  },
+  {
+    "name": "compressor get valbe",
+    "quantity": 0,
+    "buyPrice": 85,
+    "sellPrice": 150
+  },
+  {
+    "name": "Non return black",
+    "quantity": 0,
+    "buyPrice": 417,
+    "sellPrice": 500
+  },
+  {
+    "name": "Dong cheng",
+    "quantity": 0,
+    "buyPrice": 2333,
+    "sellPrice": 2800
+  },
+  {
+    "name": "compressor bass",
+    "quantity": 0,
+    "buyPrice": 260,
+    "sellPrice": 700
+  },
+  {
+    "name": "screw driver normal",
+    "quantity": 0,
+    "buyPrice": 83,
+    "sellPrice": 100
+  },
+  {
+    "name": "Compressor plastic filter",
+    "quantity": 0,
+    "buyPrice": 50,
+    "sellPrice": 100
+  },
+  {
+    "name": "Compressor stell filter",
+    "quantity": 0,
+    "buyPrice": 150,
+    "sellPrice": 300
+  },
+  {
+    "name": "Wrench 8\"",
+    "quantity": 0,
+    "buyPrice": 220,
+    "sellPrice": 350
+  },
+  {
+    "name": "Steel measuring tape 3m",
+    "quantity": 0,
+    "buyPrice": 83,
+    "sellPrice": 100
+  },
+  {
+    "name": "Steel measuring tape 5m",
+    "quantity": 0,
+    "buyPrice": 125,
+    "sellPrice": 150
+  },
+  {
+    "name": "Sencan orbital sander",
+    "quantity": 2,
+    "buyPrice": 2667,
+    "sellPrice": 3200
+  },
+  {
+    "name": "Super electric blower",
+    "quantity": 8,
+    "buyPrice": 990,
+    "sellPrice": 1500
+  },
+  {
+    "name": "Orion heat gun",
+    "quantity": 5,
+    "buyPrice": 950,
+    "sellPrice": 1200
+  },
+  {
+    "name": "Ehbl electric holder",
+    "quantity": 0,
+    "buyPrice": 420,
+    "sellPrice": 600
+  },
+  {
+    "name": "Hq grander",
+    "quantity": 5,
+    "buyPrice": 1690,
+    "sellPrice": 2500
+  },
+  {
+    "name": "Cromn drill",
+    "quantity": 0,
+    "buyPrice": 1667,
+    "sellPrice": 2000
+  },
+  {
+    "name": "Bqray drill",
+    "quantity": 0,
+    "buyPrice": 1333,
+    "sellPrice": 1600
+  },
+  {
+    "name": "Boss drill",
+    "quantity": 0,
+    "buyPrice": 1333,
+    "sellPrice": 1600
+  },
+  {
+    "name": "Ak drill",
+    "quantity": 2,
+    "buyPrice": 1250,
+    "sellPrice": 1500
+  },
+  {
+    "name": "Ingco drill 680w",
+    "quantity": 2,
+    "buyPrice": 1500,
+    "sellPrice": 2800
+  },
+  {
+    "name": "Wd 40",
+    "quantity": 11,
+    "buyPrice": 458,
+    "sellPrice": 550
+  },
+  {
+    "name": "Fuchs grease",
+    "quantity": 2,
+    "buyPrice": 292,
+    "sellPrice": 350
+  },
+  {
+    "name": "Ap oil st grease",
+    "quantity": 0,
+    "buyPrice": 333,
+    "sellPrice": 400
+  },
+  {
+    "name": "Total drill tg1061356",
+    "quantity": 1,
+    "buyPrice": 2458,
+    "sellPrice": 2950
+  },
+  {
+    "name": "Total steel measuring tape tmt126031",
+    "quantity": 0,
+    "buyPrice": 233,
+    "sellPrice": 280
+  },
+  {
+    "name": "Total grease gun tht111051",
+    "quantity": 2,
+    "buyPrice": 1225,
+    "sellPrice": 1470
+  },
+  {
+    "name": "Total High Pressure Washer 1200w tgt113026",
+    "quantity": 1,
+    "buyPrice": 7083,
+    "sellPrice": 8500
+  },
+  {
+    "name": "Auartta spray gun",
+    "quantity": 3,
+    "buyPrice": 833,
+    "sellPrice": 1000
+  },
+  {
+    "name": "Wd40d",
+    "quantity": 15,
+    "buyPrice": 115,
+    "sellPrice": 180
+  },
+  {
+    "name": "Total mini grinder tg501032",
+    "quantity": 2,
+    "buyPrice": 2583,
+    "sellPrice": 3100
+  },
+  {
+    "name": "Utustools grease gun",
+    "quantity": 2,
+    "buyPrice": 750,
+    "sellPrice": 900
+  },
+  {
+    "name": "Unit ut33b+",
+    "quantity": 1,
+    "buyPrice": 1350,
+    "sellPrice": 1600
+  },
+  {
+    "name": "Digital clamp meter small",
+    "quantity": 1,
+    "buyPrice": 550,
+    "sellPrice": 1000
+  },
+  {
+    "name": "Digital clamp meter",
+    "quantity": 1,
+    "buyPrice": 900,
+    "sellPrice": 1500
+  },
+  {
+    "name": "Unit clamp meter 2",
+    "quantity": 2,
+    "buyPrice": 1500,
+    "sellPrice": 2100
+  },
+  {
+    "name": "Total tester",
+    "quantity": 0,
+    "buyPrice": 83,
+    "sellPrice": 100
+  },
+  {
+    "name": "M seal",
+    "quantity": 0,
+    "buyPrice": 42,
+    "sellPrice": 50
+  },
+  {
+    "name": "total electric holder 500a twah5006",
+    "quantity": 0,
+    "buyPrice": 542,
+    "sellPrice": 650
+  },
+  {
+    "name": "Total electric holder 800w twah8006",
+    "quantity": 0,
+    "buyPrice": 792,
+    "sellPrice": 950
+  },
+  {
+    "name": "Total battery charger tbc1601",
+    "quantity": 2,
+    "buyPrice": 6333,
+    "sellPrice": 7600
+  },
+  {
+    "name": "Total rotary hammer th306136",
+    "quantity": 1,
+    "buyPrice": 5167,
+    "sellPrice": 6200
+  },
+  {
+    "name": "Sencan grander",
+    "quantity": 8,
+    "buyPrice": 2490,
+    "sellPrice": 3000
+  },
+  {
+    "name": "Total cutting disc tac210107100",
+    "quantity": 0,
+    "buyPrice": 1750,
+    "sellPrice": 2100
+  },
+  {
+    "name": "Total blower tb2046",
+    "quantity": 2,
+    "buyPrice": 2375,
+    "sellPrice": 2850
+  },
+  {
+    "name": "Total grander tg10710056",
+    "quantity": 0,
+    "buyPrice": 2850,
+    "sellPrice": 3420
+  },
+  {
+    "name": "Total grander 900w tg10910056",
+    "quantity": 0,
+    "buyPrice": 2933,
+    "sellPrice": 3520
+  },
+  {
+    "name": "Ingco spray gun",
+    "quantity": 0,
+    "buyPrice": 1280,
+    "sellPrice": 1500
+  },
+  {
+    "name": "Total heatgun 2000w tb2006",
+    "quantity": 1,
+    "buyPrice": 2833,
+    "sellPrice": 3400
+  },
+  {
+    "name": "Total heat gun 2000 w tb20036",
+    "quantity": 1,
+    "buyPrice": 2500,
+    "sellPrice": 3000
+  },
+  {
+    "name": "Total 500w drill td2051026",
+    "quantity": 5,
+    "buyPrice": 2167,
+    "sellPrice": 2600
+  },
+  {
+    "name": "Total 680w drill tg1061356",
+    "quantity": 2,
+    "buyPrice": 2458,
+    "sellPrice": 2950
+  },
+  {
+    "name": "Hilton pump",
+    "quantity": 5,
+    "buyPrice": 0,
     "sellPrice": 0
+  },
+  {
+    "name": "Air duster",
+    "quantity": 0,
+    "buyPrice": 250,
+    "sellPrice": 350
+  },
+  {
+    "name": "Lock pliers",
+    "quantity": 5,
+    "buyPrice": 350,
+    "sellPrice": 500
+  },
+  {
+    "name": "Drill chuck 13 mm",
+    "quantity": 3,
+    "buyPrice": 292,
+    "sellPrice": 350
+  },
+  {
+    "name": "Air pressor miter",
+    "quantity": 0,
+    "buyPrice": 250,
+    "sellPrice": 350
+  },
+  {
+    "name": "Water lavel tmt24036",
+    "quantity": 2,
+    "buyPrice": 242,
+    "sellPrice": 290
+  },
+  {
+    "name": "hose quick connector set thws030301",
+    "quantity": 2,
+    "buyPrice": 375,
+    "sellPrice": 450
+  },
+  {
+    "name": "Total pressure miter tat11601",
+    "quantity": 2,
+    "buyPrice": 1042,
+    "sellPrice": 1250
+  },
+  {
+    "name": "Total bit set tacsd0125",
+    "quantity": 2,
+    "buyPrice": 458,
+    "sellPrice": 550
+  },
+  {
+    "name": "Total pump pliers 10\" tht281006",
+    "quantity": 4,
+    "buyPrice": 542,
+    "sellPrice": 650
+  },
+  {
+    "name": "Total cutting pliers 6\" 230606",
+    "quantity": 2,
+    "buyPrice": 367,
+    "sellPrice": 440
+  },
+  {
+    "name": "Utustools cutting pliers 7\"",
+    "quantity": 2,
+    "buyPrice": 208,
+    "sellPrice": 250
+  },
+  {
+    "name": "Riveter repit gun",
+    "quantity": 2,
+    "buyPrice": 375,
+    "sellPrice": 450
+  },
+  {
+    "name": "Total plers 8\" tht210806",
+    "quantity": 5,
+    "buyPrice": 492,
+    "sellPrice": 590
+  },
+  {
+    "name": "Total wrench 6\" tht101066",
+    "quantity": 2,
+    "buyPrice": 392,
+    "sellPrice": 470
+  },
+  {
+    "name": "Drawin pliers 8\"",
+    "quantity": 1,
+    "buyPrice": 190,
+    "sellPrice": 300
+  },
+  {
+    "name": "7pcs handtools thkthp90076",
+    "quantity": 3,
+    "buyPrice": 1017,
+    "sellPrice": 1220
+  },
+  {
+    "name": "Caliper tmt331501",
+    "quantity": 2,
+    "buyPrice": 792,
+    "sellPrice": 950
+  },
+  {
+    "name": "Total torx key tht106392",
+    "quantity": 2,
+    "buyPrice": 425,
+    "sellPrice": 510
+  },
+  {
+    "name": "lock pliers 10\" THT191003",
+    "quantity": 1,
+    "buyPrice": 450,
+    "sellPrice": 540
+  },
+  {
+    "name": "Pipe wrench 12\"",
+    "quantity": 0,
+    "buyPrice": 850,
+    "sellPrice": 1300
+  },
+  {
+    "name": "Pipe wrench 14\"",
+    "quantity": 0,
+    "buyPrice": 950,
+    "sellPrice": 1500
+  },
+  {
+    "name": "Pipe wrench 18\"",
+    "quantity": 0,
+    "buyPrice": 1600,
+    "sellPrice": 2500
+  },
+  {
+    "name": "Total wrench 6\"",
+    "quantity": 0,
+    "buyPrice": 392,
+    "sellPrice": 470
+  },
+  {
+    "name": "Total wrench 8\" THT101083",
+    "quantity": 0,
+    "buyPrice": 325,
+    "sellPrice": 390
+  },
+  {
+    "name": "Total wrench 10\" THT1010103",
+    "quantity": 0,
+    "buyPrice": 475,
+    "sellPrice": 570
+  },
+  {
+    "name": "Total wrench 12\"",
+    "quantity": 0,
+    "buyPrice": 975,
+    "sellPrice": 1170
   }
 ]
